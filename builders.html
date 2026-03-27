@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🏗️ Builder Outreach Tracker</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      min-height: 100vh;
+    }
+    .header {
+      background: linear-gradient(135deg, #0d1b2a, #1b2838);
+      padding: 24px;
+      border-bottom: 1px solid #1e3a5f;
+      text-align: center;
+    }
+    .header h1 { font-size: 26px; font-weight: 800; }
+    .header h1 span { color: #38bdf8; }
+    .header p { color: #64748b; margin-top: 6px; font-size: 14px; }
+    .badge {
+      display: inline-block;
+      background: #0c4a6e;
+      color: #38bdf8;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-top: 10px;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px 16px; }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .stat-card {
+      background: #111;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 18px 14px;
+      text-align: center;
+    }
+    .stat-card .number { font-size: 34px; font-weight: 800; line-height: 1; }
+    .stat-card .label { font-size: 11px; color: #555; margin-top: 8px; text-transform: uppercase; letter-spacing: 1px; }
+    .blue { color: #38bdf8; }
+    .green { color: #4ade80; }
+    .yellow { color: #fbbf24; }
+    .orange { color: #fb923c; }
+    .purple { color: #c084fc; }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #475569;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      margin-top: 8px;
+    }
+
+    /* Call Script Box */
+    .script-box {
+      background: #0d1b2a;
+      border: 1px solid #1e3a5f;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #94a3b8;
+    }
+    .script-box h3 { color: #38bdf8; margin-bottom: 12px; font-size: 15px; }
+    .script-box .line { color: #e2e8f0; font-style: italic; margin: 6px 0; padding-left: 12px; border-left: 2px solid #38bdf8; }
+    .script-box .q { color: #fbbf24; margin: 8px 0 2px 0; font-weight: 600; }
+
+    /* Priority Table */
+    .builder-table { width: 100%; border-collapse: collapse; margin-bottom: 28px; font-size: 13px; }
+    .builder-table th {
+      text-align: left;
+      padding: 10px 12px;
+      background: #0d1b2a;
+      color: #475569;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-bottom: 1px solid #1e293b;
+    }
+    .builder-table td {
+      padding: 12px;
+      border-bottom: 1px solid #111827;
+      vertical-align: middle;
+    }
+    .builder-table tr:hover td { background: #0d1b2a; }
+    .priority-star { color: #fbbf24; font-size: 12px; }
+    .phone-link { color: #38bdf8; text-decoration: none; font-weight: 600; }
+    .phone-link:hover { text-decoration: underline; }
+    .permits-badge {
+      display: inline-block;
+      background: #0c4a6e;
+      color: #38bdf8;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 8px;
+    }
+    .status-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .s-new { background: #1e293b; color: #94a3b8; }
+    .s-called { background: #1c2937; color: #38bdf8; }
+    .s-contact { background: #1a2f1a; color: #4ade80; }
+    .s-hot { background: #431407; color: #fb923c; }
+    .s-closed { background: #14532d; color: #4ade80; }
+
+    /* Notes area */
+    .notes-area {
+      background: #111;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .notes-area h3 { color: #38bdf8; margin-bottom: 14px; font-size: 14px; }
+    .note-item {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #1a1a1a;
+      font-size: 13px;
+    }
+    .note-item:last-child { border: none; }
+    .note-label { color: #475569; min-width: 120px; font-size: 12px; }
+    .note-val { color: #e2e8f0; }
+
+    /* Email template */
+    .email-template {
+      background: #0d1b2a;
+      border: 1px solid #1e3a5f;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.7;
+    }
+    .email-template h3 { color: #38bdf8; margin-bottom: 6px; }
+    .email-template .subject { color: #fbbf24; font-weight: 600; margin-bottom: 14px; font-size: 13px; }
+    .email-template .body { color: #cbd5e1; }
+    .placeholder { color: #fb923c; font-style: italic; }
+
+    .footer {
+      text-align: center;
+      color: #1e293b;
+      font-size: 12px;
+      padding: 24px;
+      border-top: 1px solid #111827;
+    }
+    .footer a { color: #38bdf8; text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .builder-table { display: block; overflow-x: auto; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🏗️ <span>Builder Outreach</span> Tracker</h1>
+  <p>Charlotte County SFR Permits — Land Buy Box Outreach</p>
+  <div class="badge">📍 421 Active Builders | 3,099 Permits | $934.6M Total Value</div>
+</div>
+
+<div class="container">
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="number blue">421</div>
+      <div class="label">Total Builders</div>
+    </div>
+    <div class="stat-card">
+      <div class="number yellow">79</div>
+      <div class="label">5+ Permit Target</div>
+    </div>
+    <div class="stat-card">
+      <div class="number orange">0</div>
+      <div class="label">Called</div>
+    </div>
+    <div class="stat-card">
+      <div class="number green">0</div>
+      <div class="label">Buy Box Got</div>
+    </div>
+    <div class="stat-card">
+      <div class="number purple">0</div>
+      <div class="label">Deals Sent</div>
+    </div>
+    <div class="stat-card">
+      <div class="number green">0</div>
+      <div class="label">Lots Sold</div>
+    </div>
+  </div>
+
+  <!-- Call Script -->
+  <div class="section-title">📞 Call Script</div>
+  <div class="script-box">
+    <h3>Opening — Land Acquisition</h3>
+    <div class="line">"Hi, can I speak with someone in land acquisition or purchasing?"</div>
+    <div class="line">"Hi, my name is Joe Graciano, I'm a land investor in the Charlotte County area. I have access to lots in the 33952/33953/33954/33955/33980/33981 zip codes and I wanted to find out what your buy box looks like for raw lots."</div>
+
+    <br>
+    <h3>Questions to Ask</h3>
+    <div class="q">Q1:</div> <div class="line">"What zip codes are you actively buying lots in right now?"</div>
+    <div class="q">Q2:</div> <div class="line">"What's your preferred lot size — minimum and maximum square footage?"</div>
+    <div class="q">Q3:</div> <div class="line">"Do you need utilities already in, or can you work with raw land?"</div>
+    <div class="q">Q4:</div> <div class="line">"What's your typical price range per lot?"</div>
+    <div class="q">Q5:</div> <div class="line">"Are you buying finished lots, or do you develop yourselves?"</div>
+    <div class="q">Q6:</div> <div class="line">"Who's the right person to send lot packages to? Can I get their email?"</div>
+    <div class="q">Q7:</div> <div class="line">"How quickly can you close if it's a good fit?"</div>
+
+    <br>
+    <h3>Close</h3>
+    <div class="line">"Perfect — I'll put together a package for you. What's the best email to send it to?"</div>
+  </div>
+
+  <!-- Priority Builders -->
+  <div class="section-title">⭐⭐ Top Priority — Call First (30+ Permits)</div>
+  <table class="builder-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Builder</th>
+        <th>Permits</th>
+        <th>Avg Home Value</th>
+        <th>Est. Lots/Mo</th>
+        <th>Phone</th>
+        <th>Status</th>
+        <th>Contact / Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>Lennar Homes LLC</strong></td>
+        <td><span class="permits-badge">703</span></td>
+        <td class="yellow">$318K</td>
+        <td class="green">~46/mo</td>
+        <td><a class="phone-link" href="tel:2392781177">(239) 278-1177</a></td>
+        <td><span class="status-badge s-new">Not Called</span></td>
+        <td style="color:#475569;font-size:12px;">—</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>DR Horton Inc</strong></td>
+        <td><span class="permits-badge">294</span></td>
+        <td class="yellow">$288K</td>
+        <td class="green">~19/mo</td>
+        <td><a class="phone-link" href="tel:2392252600">(239) 225-2600</a></td>
+        <td><span class="status-badge s-new">Not Called</span></td>
+        <td style="color:#475569;font-size:12px;">—</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>Adams Homes of NW Florida</strong></td>
+        <td><span class="permits-badge">134</span></td>
+        <td class="yellow">$349K</td>
+        <td class="green">~8/mo</td>
+        <td><a class="phone-link" href="tel:2392785766">(239) 278-5766</a></td>
+        <td><span class="status-badge s-new">Not Called</span></td>
+        <td style="color:#475569;font-size:12px;">—</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>JHS Builders / Christopher Alan Homes</strong></td>
+        <td><span class="permits-badge">94</span></td>
+        <td>$215K</td>
+        <td>~6/mo</td>
+        <td><a class="phone-link" href="tel:3043653607">(304) 365-3607</a></td>
+        <td><span class="status-badge s-new">Not Called</span></td>
+        <td style="color:#475569;font-size:12px;">—</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>Centex Homes</strong></td>
+        <td><span class="permits-badge">88</span></td>
+        <td>$333K</td>
+        <td>~5/mo</td>
+        <td><a class="phone-link" href="tel:2394954812">(239) 495-4812</a></td>
+        <td><span class="status-badge s-new">Not Called</span></td>
+        <td style="color:#475569;font-size:12px;">—</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><strong>Coaston Homes LLC</strong></td>
+        <td><span class="permits-badge">71</span></td>
+        <td>$218K</td>
+        <td>~4/mo</td>
+        <td><a class="phone-link" href="tel:9415526705">(941) 552-6705</a></td>
+        <td><span class="status-badge s-new">Not Called</span></td>
+        <td style="color:#475569;font-size:12px;">—</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><strong>Maronda Homes FL</strong></td>
+        <td><span class="permits-badge">67</span></td>
+        <td>$360K</td>
+        <td>~4/mo</td>
+        <td><a class="phone-link" href="tel:2675753700">(267) 575-3700</a></td>
+        <td><span class="status-badge s-new">Not Called</span></td>
+        <td style="color:#475569;font-size:12px;">—</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><strong>Toll Brothers Inc</strong></td>
+        <td><span class="permits-badge">64</span></td>
+        <td class="yellow">$306K</td>
+        <td>~4/mo</td>
+        <td><a class="phone-link" href="tel:2399492304">(239) 949-2304</a></td>
+        <td><span class="status-badge s-new">Not Called</span></td>
+        <td style="color:#475569;font-size:12px;">—</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td><strong>Taylor Morrison FL</strong></td>
+        <td><span class="permits-badge">51</span></td>
+        <td>$344K</td>
+        <td>~3/mo</td>
+        <td><a class="phone-link" href="tel:8139171689">(813) 917-1689</a></td>
+        <td><span class="status-badge s-new">Not Called</span></td>
+        <td style="color:#475569;font-size:12px;">—</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td><strong>Meritage Homes FL</strong></td>
+        <td><span class="permits-badge">46</span></td>
+        <td>$274K</td>
+        <td>~3/mo</td>
+        <td><a class="phone-link" href="tel:8133868770">(813) 386-8770</a></td>
+        <td><span class="status-badge s-new">Not Called</span></td>
+        <td style="color:#475569;font-size:12px;">—</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td><strong>Dream Finders Homes</strong></td>
+        <td><span class="permits-badge">39</span></td>
+        <td>$316K</td>
+        <td>~2-3/mo</td>
+        <td><a class="phone-link" href="tel:8134182636">(813) 418-2636</a></td>
+        <td><span class="status-badge s-new">Not Called</span></td>
+        <td style="color:#475569;font-size:12px;">—</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td><strong>Perry Homes</strong></td>
+        <td><span class="permits-badge">38</span></td>
+        <td class="yellow">$755K</td>
+        <td>~2-3/mo</td>
+        <td><a class="phone-link" href="tel:7139487700">(713) 948-7700</a></td>
+        <td><span class="status-badge s-new">Not Called</span></td>
+        <td style="color:#475569;font-size:12px;">—</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td><strong>Ryan Homes</strong></td>
+        <td><span class="permits-badge">37</span></td>
+        <td>$349K</td>
+        <td>~2-3/mo</td>
+        <td><a class="phone-link" href="tel:8137397425">(813) 739-7425</a></td>
+        <td><span class="status-badge s-new">Not Called</span></td>
+        <td style="color:#475569;font-size:12px;">—</td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td><strong>M/I Homes</strong></td>
+        <td><span class="permits-badge">28</span></td>
+        <td>$242K</td>
+        <td>~2/mo</td>
+        <td><a class="phone-link" href="tel:2393876146">(239) 387-6146</a></td>
+        <td><span class="status-badge s-new">Not Called</span></td>
+        <td style="color:#475569;font-size:12px;">—</td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td><strong>Holiday Builders Inc</strong></td>
+        <td><span class="permits-badge">24</span></td>
+        <td>$289K</td>
+        <td>~1-2/mo</td>
+        <td><a class="phone-link" href="tel:4077453757">(407) 745-3757</a></td>
+        <td><span class="status-badge s-new">Not Called</span></td>
+        <td style="color:#475569;font-size:12px;">—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Email Template -->
+  <div class="section-title">📧 Email Template (After Call)</div>
+  <div class="email-template">
+    <h3>Send after getting their email on the call</h3>
+    <div class="subject">Subject: Lots Available in Charlotte County — <span class="placeholder">[ZIP Code]</span></div>
+    <div class="body">
+      Hi <span class="placeholder">[Name]</span>,<br><br>
+      Great speaking with you. As promised, here's a quick summary of what I have available:<br><br>
+      <strong>Location:</strong> Charlotte County, FL (ZIP: <span class="placeholder">[zip]</span>)<br>
+      <strong>Lot Size:</strong> <span class="placeholder">[X]</span> sq ft<br>
+      <strong>Utilities:</strong> <span class="placeholder">[in/available/raw]</span><br>
+      <strong>Asking Price:</strong> $<span class="placeholder">[X]</span><br>
+      <strong>Condition:</strong> <span class="placeholder">[cleared/raw/ready to build]</span><br><br>
+      Based on our conversation, this looks like it could fit your <span class="placeholder">[zip code]</span> build program.<br><br>
+      Can I send you the full package with survey, comp sales, and photos?<br><br>
+      Joe Graciano<br>
+      Legacy Consulting Home Buyers<br>
+      <span class="placeholder">[phone]</span>
+    </div>
+  </div>
+
+  <!-- Notes -->
+  <div class="section-title">📋 Key Notes</div>
+  <div class="notes-area">
+    <h3>Charlotte County Market Data</h3>
+    <div class="note-item"><div class="note-label">Period</div><div class="note-val">Nov 12, 2025 – Mar 10, 2026</div></div>
+    <div class="note-item"><div class="note-label">Total Permits</div><div class="note-val">3,099 SFR permits</div></div>
+    <div class="note-item"><div class="note-label">Total Value</div><div class="note-val">$934.6 Million</div></div>
+    <div class="note-item"><div class="note-label">Avg Home Cost</div><div class="note-val">$317,564</div></div>
+    <div class="note-item"><div class="note-label">Active ZIPs</div><div class="note-val">33947, 33948, 33950, 33952, 33953, 33954, 33955, 33980, 33981, 33982, 33983, 34224</div></div>
+    <div class="note-item"><div class="note-label">Best Bet</div><div class="note-val">Lennar alone needs ~46 lots/month. One relationship = recurring pipeline.</div></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  🏗️ Builder Outreach Tracker — Joe Graciano / Legacy Consulting Home Buyers<br>
+  <a href="index.html">← Back to AI Agency Dashboard</a>
+</div>
+
+</body>
+</html>
