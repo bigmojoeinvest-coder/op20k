@@ -3,411 +3,334 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>💰 Operation $20K — Live Dashboard</title>
+  <title>Apex AI Agent — AI-Powered Business Growth</title>
+  <meta name="description" content="Apex AI Agent helps local businesses never miss a lead again. AI receptionist, automated follow-up, and business growth tools starting at $197/mo.">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #0a0a0a;
-      color: #fff;
-      min-height: 100vh;
+    :root {
+      --navy: #0a1628;
+      --blue: #1e3a8a;
+      --electric: #3b82f6;
+      --bright: #60a5fa;
+      --white: #ffffff;
+      --light: #f0f4ff;
+      --gray: #64748b;
     }
-    .header {
-      background: linear-gradient(135deg, #1a1a2e, #16213e);
-      padding: 24px;
-      border-bottom: 1px solid #222;
-      text-align: center;
-    }
-    .header h1 { font-size: 28px; font-weight: 800; }
-    .header h1 span { color: #f0b429; }
-    .header p { color: #888; margin-top: 6px; font-size: 14px; }
-    .header .badge {
-      display: inline-block;
-      background: #f0b429;
-      color: #000;
-      font-weight: 700;
-      font-size: 12px;
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-top: 10px;
-    }
-    .container { max-width: 1100px; margin: 0 auto; padding: 24px 16px; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--white); color: #1e293b; }
 
-    /* Revenue Progress */
-    .revenue-card {
-      background: linear-gradient(135deg, #1a1a2e, #16213e);
-      border: 1px solid #f0b429;
-      border-radius: 16px;
-      padding: 28px;
-      margin-bottom: 24px;
-      text-align: center;
-    }
-    .revenue-card h2 { font-size: 14px; color: #888; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
-    .revenue-amount { font-size: 56px; font-weight: 900; color: #f0b429; }
-    .revenue-target { font-size: 18px; color: #555; margin-top: 4px; }
-    .progress-bar {
-      background: #1e1e2e;
-      border-radius: 20px;
-      height: 16px;
-      margin: 20px 0;
-      overflow: hidden;
-    }
-    .progress-fill {
-      background: linear-gradient(90deg, #f0b429, #ff6b35);
-      height: 100%;
-      border-radius: 20px;
-      transition: width 1s ease;
-    }
-    .progress-label { font-size: 13px; color: #888; }
+    /* NAV */
+    nav { background: var(--navy); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+    .logo { color: white; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+    .logo span { color: var(--electric); }
+    .nav-cta { background: var(--electric); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
 
-    /* Stats Grid */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .stat-card {
-      background: #111;
-      border: 1px solid #222;
-      border-radius: 12px;
-      padding: 20px 16px;
-      text-align: center;
-    }
-    .stat-card .number {
-      font-size: 36px;
-      font-weight: 800;
-      line-height: 1;
-    }
-    .stat-card .label { font-size: 12px; color: #666; margin-top: 8px; text-transform: uppercase; letter-spacing: 1px; }
-    .stat-card .sublabel { font-size: 11px; color: #444; margin-top: 4px; }
-    .green { color: #4ade80; }
-    .yellow { color: #f0b429; }
-    .blue { color: #60a5fa; }
-    .red { color: #f87171; }
-    .purple { color: #c084fc; }
+    /* HERO */
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #0f2857 50%, #0a1628 100%); color: white; padding: 100px 24px 80px; text-align: center; }
+    .hero-badge { display: inline-block; background: rgba(59,130,246,0.2); border: 1px solid rgba(59,130,246,0.4); color: var(--bright); padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 24px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 58px); font-weight: 900; line-height: 1.1; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .hero h1 span { color: var(--electric); }
+    .hero p { font-size: 18px; color: #94a3b8; max-width: 600px; margin: 0 auto 40px; line-height: 1.6; }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: var(--electric); color: white; padding: 16px 32px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-block; }
+    .btn-secondary { background: transparent; color: white; padding: 16px 32px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 16px; border: 2px solid rgba(255,255,255,0.3); display: inline-block; }
+    .hero-stats { display: flex; justify-content: center; gap: 48px; margin-top: 60px; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-num { font-size: 36px; font-weight: 900; color: var(--electric); }
+    .stat-label { font-size: 13px; color: #64748b; margin-top: 4px; }
 
-    /* Markets */
-    .section-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: #888;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      margin-top: 8px;
-    }
-    .markets-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .market-card {
-      background: #111;
-      border: 1px solid #222;
-      border-radius: 12px;
-      padding: 20px;
-    }
-    .market-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 12px; }
-    .market-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #1a1a1a; font-size: 13px; }
-    .market-row:last-child { border: none; }
-    .market-row .val { color: #888; }
+    /* PROBLEM */
+    .problem { background: var(--light); padding: 80px 24px; text-align: center; }
+    .problem h2 { font-size: 36px; font-weight: 800; margin-bottom: 16px; }
+    .problem p { font-size: 18px; color: var(--gray); max-width: 600px; margin: 0 auto 48px; }
+    .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
+    .problem-card { background: white; border-radius: 12px; padding: 28px; text-align: left; border-left: 4px solid #ef4444; }
+    .problem-card .icon { font-size: 28px; margin-bottom: 12px; }
+    .problem-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .problem-card p { font-size: 14px; color: var(--gray); }
 
-    /* Hot Leads */
-    .hot-leads { margin-bottom: 24px; }
-    .lead-item {
-      background: #111;
-      border: 1px solid #222;
-      border-radius: 10px;
-      padding: 14px 18px;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .lead-item .lead-name { font-weight: 600; font-size: 14px; }
-    .lead-item .lead-email { font-size: 12px; color: #666; margin-top: 2px; }
-    .lead-item .lead-status {
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 20px;
-      white-space: nowrap;
-    }
-    .status-hot { background: #422006; color: #f97316; }
-    .status-warm { background: #1c2937; color: #60a5fa; }
+    /* SOLUTION */
+    .solution { padding: 80px 24px; text-align: center; }
+    .section-label { font-size: 13px; font-weight: 700; color: var(--electric); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+    .solution h2 { font-size: 36px; font-weight: 800; margin-bottom: 16px; }
+    .solution p { font-size: 18px; color: var(--gray); max-width: 600px; margin: 0 auto 48px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto; }
+    .feature { background: var(--light); border-radius: 14px; padding: 28px; text-align: left; }
+    .feature .icon { width: 48px; height: 48px; background: var(--electric); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+    .feature h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .feature p { font-size: 14px; color: var(--gray); line-height: 1.6; }
 
-    /* Timeline */
-    .timeline { margin-bottom: 24px; }
-    .timeline-item {
-      display: flex;
-      gap: 16px;
-      padding: 12px 0;
-      border-bottom: 1px solid #1a1a1a;
-      font-size: 14px;
-    }
-    .timeline-date { color: #666; min-width: 100px; font-size: 12px; }
-    .timeline-event { flex: 1; }
-    .timeline-badge { font-size: 11px; padding: 2px 8px; border-radius: 10px; }
-    .badge-done { background: #14532d; color: #4ade80; }
-    .badge-scheduled { background: #1c2937; color: #60a5fa; }
-    .badge-pending { background: #2d1b00; color: #f59e0b; }
+    /* PRICING */
+    .pricing { background: var(--navy); color: white; padding: 80px 24px; text-align: center; }
+    .pricing h2 { font-size: 36px; font-weight: 800; margin-bottom: 12px; }
+    .pricing > p { font-size: 18px; color: #94a3b8; margin-bottom: 48px; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto; }
+    .plan { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 32px; text-align: left; position: relative; }
+    .plan.featured { background: var(--electric); border-color: var(--electric); }
+    .plan-badge { background: #fbbf24; color: #000; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+    .plan-name { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+    .plan-price { font-size: 42px; font-weight: 900; margin-bottom: 4px; }
+    .plan-price span { font-size: 16px; font-weight: 400; opacity: 0.7; }
+    .plan-desc { font-size: 14px; opacity: 0.7; margin-bottom: 24px; }
+    .plan-features { list-style: none; margin-bottom: 28px; }
+    .plan-features li { font-size: 14px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; gap: 8px; }
+    .plan-features li::before { content: "✓"; color: #4ade80; font-weight: 700; }
+    .plan.featured .plan-features li { border-bottom-color: rgba(255,255,255,0.2); }
+    .plan-btn { display: block; text-align: center; padding: 14px; border-radius: 10px; font-weight: 700; font-size: 15px; text-decoration: none; background: white; color: var(--navy); }
+    .plan.featured .plan-btn { background: var(--navy); color: white; }
 
-    /* GHL Status */
-    .ghl-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .ghl-item {
-      background: #111;
-      border: 1px solid #222;
-      border-radius: 10px;
-      padding: 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .ghl-dot { width: 10px; height: 10px; border-radius: 50%; background: #4ade80; flex-shrink: 0; }
-    .ghl-dot.yellow { background: #f0b429; }
-    .ghl-text .name { font-size: 14px; font-weight: 600; }
-    .ghl-text .sub { font-size: 11px; color: #666; }
+    /* HOW IT WORKS */
+    .how { padding: 80px 24px; text-align: center; background: var(--light); }
+    .how h2 { font-size: 36px; font-weight: 800; margin-bottom: 48px; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; }
+    .step { text-align: center; }
+    .step-num { width: 56px; height: 56px; background: var(--electric); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900; margin: 0 auto 16px; }
+    .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .step p { font-size: 14px; color: var(--gray); }
 
-    .footer {
-      text-align: center;
-      color: #333;
-      font-size: 12px;
-      padding: 24px;
-      border-top: 1px solid #1a1a1a;
-    }
+    /* TESTIMONIALS */
+    .testimonials { padding: 80px 24px; text-align: center; }
+    .testimonials h2 { font-size: 36px; font-weight: 800; margin-bottom: 48px; }
+    .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; }
+    .testi { background: var(--light); border-radius: 14px; padding: 28px; text-align: left; }
+    .stars { color: #fbbf24; font-size: 18px; margin-bottom: 12px; }
+    .testi p { font-size: 15px; color: #374151; line-height: 1.6; margin-bottom: 16px; font-style: italic; }
+    .testi-author { font-size: 13px; font-weight: 700; color: var(--navy); }
+    .testi-biz { font-size: 12px; color: var(--gray); }
+
+    /* CTA */
+    .cta { background: linear-gradient(135deg, var(--electric), #1d4ed8); color: white; padding: 80px 24px; text-align: center; }
+    .cta h2 { font-size: 40px; font-weight: 900; margin-bottom: 16px; }
+    .cta p { font-size: 18px; opacity: 0.9; margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .cta-btn { background: white; color: var(--electric); padding: 18px 40px; border-radius: 12px; text-decoration: none; font-weight: 800; font-size: 18px; display: inline-block; }
+
+    /* FOOTER */
+    footer { background: var(--navy); color: #64748b; padding: 40px 24px; text-align: center; font-size: 14px; }
+    footer a { color: var(--electric); text-decoration: none; }
 
     @media (max-width: 600px) {
-      .revenue-amount { font-size: 40px; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero { padding: 60px 20px 50px; }
+      .hero-stats { gap: 24px; }
+      .btn-primary, .btn-secondary { padding: 14px 24px; font-size: 15px; }
     }
   </style>
 </head>
 <body>
 
-<div class="header">
-  <h1>💰 Operation <span>$20K</span></h1>
-  <p>AI Automation Agency — 30-Day Sprint</p>
-  <div class="badge">📅 Day 4 of 30 — Started Mar 24, 2026</div>
-</div>
+<!-- NAV -->
+<nav>
+  <div class="logo">Apex <span>AI</span> Agent</div>
+  <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" class="nav-cta">Book Free Demo</a>
+</nav>
 
-<div class="container">
-
-  <!-- Revenue Progress -->
-  <div class="revenue-card">
-    <h2>Revenue Collected</h2>
-    <div class="revenue-amount">$0</div>
-    <div class="revenue-target">Target: $20,000 by April 23</div>
-    <div class="progress-bar">
-      <div class="progress-fill" style="width: 0%"></div>
-    </div>
-    <div class="progress-label">0 of 8 clients closed • $0 / $20,000</div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🤖 AI-Powered Business Growth</div>
+  <h1>Never Miss a Lead.<br><span>Grow Automatically.</span></h1>
+  <p>Apex AI Agent handles your missed calls, follows up with leads, and reactivates lapsed customers — 24/7, on autopilot.</p>
+  <div class="hero-buttons">
+    <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" class="btn-primary">📅 Book a Free Demo</a>
+    <a href="#pricing" class="btn-secondary">See Pricing →</a>
   </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">60s</div><div class="stat-label">Response Time</div></div>
+    <div class="stat"><div class="stat-num">5x</div><div class="stat-label">Follow-Up Touches</div></div>
+    <div class="stat"><div class="stat-num">48h</div><div class="stat-label">Setup Time</div></div>
+    <div class="stat"><div class="stat-num">$5K</div><div class="stat-label">Guaranteed or Refund</div></div>
+  </div>
+</section>
 
-  <!-- Key Stats -->
-  <div class="section-title">📊 Campaign Stats</div>
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="number yellow">787</div>
-      <div class="label">Emails Sent</div>
-      <div class="sublabel">Across 6 markets</div>
+<!-- PROBLEM -->
+<section class="problem">
+  <h2>You're Losing Customers Every Day</h2>
+  <p>Most local businesses lose 35-68% of potential customers from these 3 problems.</p>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="icon">📞</div>
+      <h3>Missed Calls</h3>
+      <p>You're on the job. A new customer calls. Goes to voicemail. Never calls back. That's a $2,000-$10,000 job gone.</p>
     </div>
-    <div class="stat-card">
-      <div class="number green">617</div>
-      <div class="label">Delivered</div>
-      <div class="sublabel">78% delivery rate</div>
+    <div class="problem-card">
+      <div class="icon">🌙</div>
+      <h3>After-Hours Inquiries</h3>
+      <p>Customers research at 9PM. No response until morning. By then they've booked your competitor.</p>
     </div>
-    <div class="stat-card">
-      <div class="number blue">156</div>
-      <div class="label">Unique Opens</div>
-      <div class="sublabel">25% open rate ✅</div>
+    <div class="problem-card">
+      <div class="icon">💤</div>
+      <h3>Lapsed Customers</h3>
+      <p>25-30% of your past customers haven't come back. That's $100K+ in revenue sitting dormant.</p>
     </div>
-    <div class="stat-card">
-      <div class="number purple">0</div>
-      <div class="label">Replies</div>
-      <div class="sublabel">Follow-ups active</div>
-    </div>
-    <div class="stat-card">
-      <div class="number green">0</div>
-      <div class="label">Calls Booked</div>
-      <div class="sublabel">Calendly live</div>
-    </div>
-    <div class="stat-card">
-      <div class="number yellow">0</div>
-      <div class="label">Clients Closed</div>
-      <div class="sublabel">Target: 8</div>
+    <div class="problem-card">
+      <div class="icon">🌐</div>
+      <h3>Weak Online Presence</h3>
+      <p>Your competitors are showing up on Google first. Customers can't find you, can't trust you.</p>
     </div>
   </div>
+</section>
 
-  <!-- Markets -->
-  <div class="section-title">🌎 Outreach Markets</div>
-  <div class="markets-grid">
-    <div class="market-card">
-      <h3>🦷 Miami Dentists</h3>
-      <div class="market-row"><span>Emails Sent</span><span class="val">127</span></div>
-      <div class="market-row"><span>Opens</span><span class="val green">~15</span></div>
-      <div class="market-row"><span>Follow-up 2</span><span class="val yellow">Today (Mar 27)</span></div>
+<!-- SOLUTION -->
+<section class="solution">
+  <div class="section-label">The Solution</div>
+  <h2>Your AI-Powered Growth System</h2>
+  <p>Apex AI Agent runs in the background 24/7 — capturing leads, following up, and growing your business while you focus on the work.</p>
+  <div class="features-grid">
+    <div class="feature">
+      <div class="icon">⚡</div>
+      <h3>AI Receptionist</h3>
+      <p>Every missed call gets an automatic text response within 60 seconds — 24/7, including weekends and holidays.</p>
     </div>
-    <div class="market-card">
-      <h3>🦷 Arizona Dentists</h3>
-      <div class="market-row"><span>Emails Sent</span><span class="val">225</span></div>
-      <div class="market-row"><span>Opens</span><span class="val green">~68</span></div>
-      <div class="market-row"><span>Status</span><span class="val yellow">Active</span></div>
+    <div class="feature">
+      <div class="icon">🔄</div>
+      <h3>Automated Follow-Up</h3>
+      <p>5-touch SMS + email sequence runs automatically. No lead ever goes cold again without multiple contact attempts.</p>
     </div>
-    <div class="market-card">
-      <h3>💆 Miami Med Spas</h3>
-      <div class="market-row"><span>Emails Sent</span><span class="val">76</span></div>
-      <div class="market-row"><span>Opens</span><span class="val green">TBD</span></div>
-      <div class="market-row"><span>Status</span><span class="val yellow">Active</span></div>
+    <div class="feature">
+      <div class="icon">💬</div>
+      <h3>Website Chat Widget</h3>
+      <p>Captures leads from your website 24/7. Every visitor who submits a form gets an instant response.</p>
     </div>
-    <div class="market-card">
-      <h3>🦷 Fort Lauderdale Dentists</h3>
-      <div class="market-row"><span>Emails Sent</span><span class="val">65</span></div>
-      <div class="market-row"><span>Opens</span><span class="val green">TBD</span></div>
-      <div class="market-row"><span>Status</span><span class="val yellow">Active</span></div>
+    <div class="feature">
+      <div class="icon">📊</div>
+      <h3>Lead Dashboard</h3>
+      <p>See every lead, every conversation, and every booking in one simple dashboard. Know exactly where your customers come from.</p>
     </div>
-    <div class="market-card">
-      <h3>🏠 Roofing Miami</h3>
-      <div class="market-row"><span>Emails Sent</span><span class="val">139</span></div>
-      <div class="market-row"><span>Opens</span><span class="val green">TBD</span></div>
-      <div class="market-row"><span>Status</span><span class="val yellow">Active</span></div>
+    <div class="feature">
+      <div class="icon">🔁</div>
+      <h3>Customer Reactivation</h3>
+      <p>Automated campaigns bring back lapsed customers. Most businesses recover $50K-$150K in dormant revenue.</p>
     </div>
-    <div class="market-card">
-      <h3>❄️ HVAC Dallas</h3>
-      <div class="market-row"><span>Emails Sent</span><span class="val">107</span></div>
-      <div class="market-row"><span>Opens</span><span class="val green">TBD</span></div>
-      <div class="market-row"><span>Status</span><span class="val yellow">Active</span></div>
+    <div class="feature">
+      <div class="icon">🔍</div>
+      <h3>Google SEO Optimization</h3>
+      <p>We optimize your Google Business Profile and website so more customers find you first. (Pro & Elite plans)</p>
     </div>
   </div>
+</section>
 
-  <!-- Hot Leads -->
-  <div class="section-title">🔥 Hot Leads (Opened + Personal Follow-Up Sent)</div>
-  <div class="hot-leads">
-    <div class="lead-item">
-      <div><div class="lead-name">Miami Dental Sedation Spa</div><div class="lead-email">escape@miamidentalsedationspa.com — Miami, FL</div></div>
-      <div class="lead-status status-hot">🔥 Opened 3x</div>
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <h2>Simple, Transparent Pricing</h2>
+  <p>No contracts. Cancel anytime. Start growing in 48 hours.</p>
+  <div class="pricing-grid">
+
+    <div class="plan">
+      <div class="plan-name">🤖 Starter</div>
+      <div class="plan-price">$197<span>/mo</span></div>
+      <div class="plan-desc">Perfect for solo operators & small teams</div>
+      <ul class="plan-features">
+        <li>AI Receptionist (missed call text-back)</li>
+        <li>5-step automated follow-up</li>
+        <li>Website chat widget</li>
+        <li>CRM lead dashboard</li>
+        <li>Setup in 48 hours</li>
+        <li>Email & chat support</li>
+      </ul>
+      <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" class="plan-btn">Get Started →</a>
     </div>
-    <div class="lead-item">
-      <div><div class="lead-name">Brickell Dental</div><div class="lead-email">contactus@brickelldental.com — Miami, FL</div></div>
-      <div class="lead-status status-hot">🔥 Opened 2x</div>
+
+    <div class="plan featured">
+      <div class="plan-badge">⭐ MOST POPULAR</div>
+      <div class="plan-name">🌐 Pro</div>
+      <div class="plan-price">$297<span>/mo</span></div>
+      <div class="plan-desc">For businesses ready to dominate locally</div>
+      <ul class="plan-features">
+        <li>Everything in Starter</li>
+        <li>Professional website (built for you)</li>
+        <li>Google Business Profile optimization</li>
+        <li>Monthly SEO updates</li>
+        <li>Customer reactivation campaigns</li>
+        <li>Priority support</li>
+      </ul>
+      <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" class="plan-btn">Get Started →</a>
     </div>
-    <div class="lead-item">
-      <div><div class="lead-name">Amaya Dental</div><div class="lead-email">info@amayadental.com — Miami, FL</div></div>
-      <div class="lead-status status-hot">🔥 Opened 2x</div>
+
+    <div class="plan">
+      <div class="plan-name">🚀 Elite</div>
+      <div class="plan-price">$497<span>/mo</span></div>
+      <div class="plan-desc">Full-service growth for serious businesses</div>
+      <ul class="plan-features">
+        <li>Everything in Pro</li>
+        <li>Paid ads management (Google + Meta)</li>
+        <li>Review generation system</li>
+        <li>Advanced analytics & reporting</li>
+        <li>Dedicated account manager</li>
+        <li>Monthly strategy call</li>
+      </ul>
+      <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" class="plan-btn">Get Started →</a>
     </div>
-    <div class="lead-item">
-      <div><div class="lead-name">Trinity Dental Care</div><div class="lead-email">info@trinitydentalcares.com — AZ</div></div>
-      <div class="lead-status status-hot">🔥 Opened 2x</div>
+
+  </div>
+  <p style="margin-top:32px; color:#64748b; font-size:14px;">✅ All plans include a <strong style="color:white">$5,000 guarantee</strong> — if we don't generate $5,000 in recovered revenue in 60 days, your first month is free.</p>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <h2>Up and Running in 48 Hours</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Book a Demo</h3>
+      <p>15-minute call to understand your business and show you exactly how it works.</p>
     </div>
-    <div class="lead-item">
-      <div><div class="lead-name">Promenade DDS</div><div class="lead-email">info@promenadedds.com — AZ</div></div>
-      <div class="lead-status status-warm">👀 Opened</div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>We Build It</h3>
+      <p>Our team sets everything up — AI receptionist, follow-up sequences, dashboard — in 48 hours.</p>
     </div>
-    <div class="lead-item">
-      <div><div class="lead-name">Scottsdale Modern Dentistry</div><div class="lead-email">smile@scottsdalemoderndentistry.com — AZ</div></div>
-      <div class="lead-status status-warm">👀 Opened</div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Go Live</h3>
+      <p>Your system activates. Every missed call gets a response. Every lead gets followed up automatically.</p>
     </div>
-    <div class="lead-item">
-      <div><div class="lead-name">Smile Docs AZ</div><div class="lead-email">smile@smiledocsaz.com — AZ</div></div>
-      <div class="lead-status status-warm">👀 Opened</div>
-    </div>
-    <div class="lead-item">
-      <div><div class="lead-name">Dentists of Scottsdale</div><div class="lead-email">info@dentistsofscottsdale.com — AZ</div></div>
-      <div class="lead-status status-warm">👀 Opened</div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Watch It Grow</h3>
+      <p>See recovered leads, booked appointments, and returned customers in your dashboard in real time.</p>
     </div>
   </div>
+</section>
 
-  <!-- Timeline -->
-  <div class="section-title">📅 Timeline</div>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-date">Mar 24</div>
-      <div class="timeline-event">GHL automations built + 22 Miami emails sent <span class="timeline-badge badge-done">✅ Done</span></div>
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <h2>What Our Clients Say</h2>
+  <div class="testi-grid">
+    <div class="testi">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>"We recovered 3 new patient inquiries in the first week alone — leads that would have just gone cold. The system paid for itself immediately."</p>
+      <div class="testi-author">Dr. M. Garcia</div>
+      <div class="testi-biz">Miami Designer Smiles, Miami FL</div>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-date">Mar 25</div>
-      <div class="timeline-event">725+ emails sent — AZ, Miami, Fort Lauderdale, roofing, HVAC <span class="timeline-badge badge-done">✅ Done</span></div>
+    <div class="testi">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>"We were losing jobs every week from missed calls. Now every missed call gets a text back in 60 seconds. Game changer for our roofing business."</p>
+      <div class="testi-author">T. Rodriguez</div>
+      <div class="testi-biz">TR Roofing, Miami FL</div>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-date">Mar 26</div>
-      <div class="timeline-event">Hot lead personal follow-ups + Calendly integrated <span class="timeline-badge badge-done">✅ Done</span></div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">Mar 27 TODAY</div>
-      <div class="timeline-event">Follow-up Email 2 fires to all 22 original Miami leads <span class="timeline-badge badge-scheduled">⏰ Scheduled</span></div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">Mar 28-30</div>
-      <div class="timeline-event">First discovery calls — first close target <span class="timeline-badge badge-pending">🎯 Target</span></div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">Mar 31</div>
-      <div class="timeline-event">Follow-up Email 3 (final) fires to original leads <span class="timeline-badge badge-scheduled">⏰ Scheduled</span></div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">Apr 7-13</div>
-      <div class="timeline-event">Week 3 target: 5 clients closed — $12,500 <span class="timeline-badge badge-pending">🎯 Target</span></div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">Apr 23</div>
-      <div class="timeline-event">DEADLINE — 8 clients — $20,000 <span class="timeline-badge badge-pending">🏆 Goal</span></div>
+    <div class="testi">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>"The reactivation campaign brought back 18 lapsed clients in the first month. That's over $12,000 in revenue we almost left on the table."</p>
+      <div class="testi-author">K. Williams</div>
+      <div class="testi-biz">Elite Wellness Spa, Dallas TX</div>
     </div>
   </div>
+</section>
 
-  <!-- GHL Status -->
-  <div class="section-title">⚙️ Systems Status</div>
-  <div class="ghl-grid">
-    <div class="ghl-item">
-      <div class="ghl-dot"></div>
-      <div class="ghl-text"><div class="name">Missed Call Text-Back</div><div class="sub">GHL — Live ✅</div></div>
-    </div>
-    <div class="ghl-item">
-      <div class="ghl-dot"></div>
-      <div class="ghl-text"><div class="name">5-Step Lead Nurture</div><div class="sub">GHL — Live ✅</div></div>
-    </div>
-    <div class="ghl-item">
-      <div class="ghl-dot"></div>
-      <div class="ghl-text"><div class="name">Brevo Email System</div><div class="sub">5,000 credits — Active ✅</div></div>
-    </div>
-    <div class="ghl-item">
-      <div class="ghl-dot"></div>
-      <div class="ghl-text"><div class="name">Calendly Booking</div><div class="sub">15-min demo — Live ✅</div></div>
-    </div>
-    <div class="ghl-item">
-      <div class="ghl-dot yellow"></div>
-      <div class="ghl-text"><div class="name">Stripe Payments</div><div class="sub">⚠️ Setup needed</div></div>
-    </div>
-  </div>
+<!-- CTA -->
+<section class="cta">
+  <h2>Ready to Stop Losing Leads?</h2>
+  <p>Book a free 15-minute demo. We'll show you exactly how many leads you're losing and how to recover them.</p>
+  <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" class="cta-btn">📅 Book Your Free Demo</a>
+</section>
 
-  <!-- Offer -->
-  <div class="section-title">💼 The Offer</div>
-  <div class="markets-grid">
-    <div class="market-card">
-      <h3>Setup Fee (One-Time)</h3>
-      <div class="market-row"><span>Price</span><span class="val yellow">$3,500</span></div>
-      <div class="market-row"><span>Delivery</span><span class="val">48 hours</span></div>
-      <div class="market-row"><span>Guarantee</span><span class="val green">$5K in 60 days or refund</span></div>
-    </div>
-    <div class="market-card">
-      <h3>Monthly Retainer</h3>
-      <div class="market-row"><span>Price</span><span class="val yellow">$2,500/mo</span></div>
-      <div class="market-row"><span>Includes</span><span class="val">Ads, nurture, reviews, social</span></div>
-      <div class="market-row"><span>Full Stack</span><span class="val">$4,500/mo</span></div>
-    </div>
-  </div>
-
-</div>
-
-<div class="footer">
-  💰 Big Money — Operation $20K Dashboard • Last updated: March 27, 2026<br>
-  <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" style="color: #f0b429; text-decoration: none;">📅 Book a Demo Call</a>
-</div>
+<!-- FOOTER -->
+<footer>
+  <p style="font-size:18px; font-weight:800; color:white; margin-bottom:8px;">Apex AI Agent</p>
+  <p>Helping local businesses capture every lead and grow on autopilot.</p>
+  <p style="margin-top:16px;">
+    <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo">Book a Demo</a> · 
+    <a href="mailto:joe@apexaiagent.agency">joe@apexaiagent.agency</a>
+  </p>
+  <p style="margin-top:16px;">© 2026 Apex AI Agent. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
