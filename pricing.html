@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing — Apex AI Agents</title>
+  <meta name="description" content="Simple, transparent pricing for AI receptionist and follow-up automation. Starter $197/mo, Pro $297/mo, Elite $497/mo. No contracts. Cancel anytime.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy: #0a1628;
+      --blue: #1e3a8a;
+      --electric: #3b82f6;
+      --bright: #60a5fa;
+      --white: #ffffff;
+      --light: #f0f4ff;
+      --gray: #64748b;
+      --green: #10b981;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--white); color: #1e293b; }
+    nav { background: var(--navy); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+    .logo { color: white; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+    .logo span { color: var(--electric); }
+    .nav-cta { background: var(--electric); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+
+    .hero { background: linear-gradient(135deg, var(--navy), #0f2857); color: white; padding: 80px 24px 60px; text-align: center; }
+    .hero h1 { font-size: clamp(30px, 5vw, 48px); font-weight: 900; margin-bottom: 16px; }
+    .hero p { font-size: 18px; color: #94a3b8; max-width: 550px; margin: 0 auto; }
+
+    .pricing-section { padding: 80px 24px; background: var(--navy); }
+    .pricing-section h2 { font-size: 32px; font-weight: 800; color: white; text-align: center; margin-bottom: 8px; }
+    .pricing-section > p { text-align: center; color: #64748b; margin-bottom: 48px; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto 40px; }
+    .plan { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 36px; text-align: left; color: white; position: relative; }
+    .plan.featured { background: var(--electric); border-color: var(--electric); }
+    .plan-badge { background: #fbbf24; color: #000; font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 20px; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+    .plan-name { font-size: 22px; font-weight: 900; margin-bottom: 4px; }
+    .plan-tagline { font-size: 13px; opacity: 0.65; margin-bottom: 20px; }
+    .plan-price { font-size: 52px; font-weight: 900; line-height: 1; margin-bottom: 4px; }
+    .plan-price span { font-size: 18px; font-weight: 400; opacity: 0.65; }
+    .plan-desc { font-size: 14px; opacity: 0.75; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.15); }
+    .plan-features { list-style: none; margin-bottom: 32px; }
+    .plan-features li { font-size: 14px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; gap: 10px; align-items: flex-start; }
+    .plan-features li:last-child { border-bottom: none; }
+    .plan-features li::before { content: "✓"; color: #4ade80; font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+    .plan.featured .plan-features li { border-bottom-color: rgba(255,255,255,0.2); }
+    .plan-btn { display: block; text-align: center; padding: 15px; border-radius: 12px; font-weight: 800; font-size: 15px; text-decoration: none; background: white; color: var(--navy); }
+    .plan.featured .plan-btn { background: var(--navy); color: white; }
+    .guarantee-bar { text-align: center; color: #94a3b8; font-size: 14px; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+    .guarantee-bar strong { color: white; }
+
+    .compare { padding: 80px 24px; background: var(--white); }
+    .compare h2 { font-size: 32px; font-weight: 800; text-align: center; margin-bottom: 48px; }
+    .compare-table { max-width: 900px; margin: 0 auto; overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    thead th { background: var(--navy); color: white; padding: 14px 16px; text-align: center; font-size: 15px; font-weight: 700; }
+    thead th:first-child { text-align: left; border-radius: 10px 0 0 0; }
+    thead th:last-child { border-radius: 0 10px 0 0; }
+    thead th.featured-col { background: var(--electric); }
+    tbody tr:nth-child(even) { background: var(--light); }
+    tbody td { padding: 13px 16px; border-bottom: 1px solid #e2e8f0; }
+    tbody td:first-child { font-weight: 600; color: #374151; }
+    tbody td:not(:first-child) { text-align: center; color: #64748b; }
+    .check { color: var(--green); font-size: 18px; font-weight: 800; }
+    .dash { color: #cbd5e1; }
+
+    .faq { padding: 80px 24px; background: var(--light); }
+    .faq h2 { font-size: 32px; font-weight: 800; text-align: center; margin-bottom: 48px; }
+    .faq-list { max-width: 720px; margin: 0 auto; }
+    .faq-item { background: white; border-radius: 12px; margin-bottom: 16px; overflow: hidden; border: 1px solid #e2e8f0; }
+    .faq-q { padding: 20px 24px; font-weight: 700; font-size: 16px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: #1e293b; }
+    .faq-q::after { content: "+"; font-size: 22px; color: var(--electric); font-weight: 400; }
+    .faq-a { padding: 0 24px 20px; font-size: 15px; color: var(--gray); line-height: 1.7; }
+
+    .cta { background: linear-gradient(135deg, var(--electric), #1d4ed8); color: white; padding: 80px 24px; text-align: center; }
+    .cta h2 { font-size: 38px; font-weight: 900; margin-bottom: 16px; }
+    .cta p { font-size: 18px; opacity: 0.9; margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .cta-btn { background: white; color: var(--electric); padding: 18px 40px; border-radius: 12px; text-decoration: none; font-weight: 800; font-size: 18px; display: inline-block; }
+    .cta-sub { margin-top: 16px; font-size: 14px; opacity: 0.8; }
+
+    footer { background: var(--navy); color: #64748b; padding: 40px 24px; text-align: center; font-size: 14px; }
+    footer a { color: var(--electric); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .pricing-section { padding: 60px 16px; }
+      .plan { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Apex <span>AI</span> Agents</div>
+  <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" class="nav-cta">Book Free Demo</a>
+</nav>
+
+<section class="hero">
+  <h1>Simple Pricing.<br>Real Results.</h1>
+  <p>No contracts. No setup fees. No surprises. Start in 48 hours and cancel anytime.</p>
+</section>
+
+<section class="pricing-section" id="pricing">
+  <h2>Choose Your Plan</h2>
+  <p style="color:#64748b;">All plans include our $5,000 guarantee.</p>
+  <div class="pricing-grid">
+
+    <div class="plan">
+      <div class="plan-name">🤖 Starter</div>
+      <div class="plan-tagline">For solo operators & small teams</div>
+      <div class="plan-price">$197<span>/mo</span></div>
+      <div class="plan-desc">Core AI automation to stop losing leads immediately. Everything you need to respond fast and follow up automatically.</div>
+      <ul class="plan-features">
+        <li>AI Receptionist — missed call text-back in 60 seconds</li>
+        <li>5-step automated SMS + email follow-up</li>
+        <li>Website lead capture widget</li>
+        <li>CRM dashboard — all leads in one place</li>
+        <li>Setup complete in 48 hours</li>
+        <li>Email & chat support</li>
+        <li>Cancel anytime</li>
+      </ul>
+      <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" class="plan-btn">Get Started →</a>
+    </div>
+
+    <div class="plan featured">
+      <div class="plan-badge">⭐ MOST POPULAR</div>
+      <div class="plan-name">🌐 Pro</div>
+      <div class="plan-tagline">For businesses ready to dominate locally</div>
+      <div class="plan-price">$297<span>/mo</span></div>
+      <div class="plan-desc">Everything in Starter, plus a professional web presence and monthly customer reactivation campaigns that recover dormant revenue.</div>
+      <ul class="plan-features">
+        <li>Everything in Starter</li>
+        <li>Professional website (built for you)</li>
+        <li>Google Business Profile optimization</li>
+        <li>Monthly SEO content updates</li>
+        <li>Customer reactivation campaigns</li>
+        <li>Review generation system</li>
+        <li>Priority phone support</li>
+      </ul>
+      <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" class="plan-btn">Get Started →</a>
+    </div>
+
+    <div class="plan">
+      <div class="plan-name">🚀 Elite</div>
+      <div class="plan-tagline">Full-service growth for serious businesses</div>
+      <div class="plan-price">$497<span>/mo</span></div>
+      <div class="plan-desc">The complete done-for-you growth engine. Paid ads, advanced analytics, and a dedicated account manager who knows your business by name.</div>
+      <ul class="plan-features">
+        <li>Everything in Pro</li>
+        <li>Google Ads + Meta Ads management</li>
+        <li>Advanced analytics & monthly reporting</li>
+        <li>Dedicated account manager</li>
+        <li>Monthly 1-on-1 strategy call</li>
+        <li>A/B testing on campaigns</li>
+        <li>Same-day support response</li>
+      </ul>
+      <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" class="plan-btn">Get Started →</a>
+    </div>
+
+  </div>
+  <p class="guarantee-bar">🛡️ <strong>The $5,000 Guarantee:</strong> If we don't generate at least $5,000 in recovered or new revenue within 60 days of going live, your first month is completely free. Zero risk.</p>
+</section>
+
+<section class="compare">
+  <h2>Feature Comparison</h2>
+  <div class="compare-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Starter<br><small>$197/mo</small></th>
+          <th class="featured-col">Pro<br><small>$297/mo</small></th>
+          <th>Elite<br><small>$497/mo</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>AI Receptionist (missed call text-back)</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>5-Step Lead Follow-Up (SMS + Email)</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Website Chat Lead Capture</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>CRM Lead Dashboard</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>48-Hour Setup</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Professional Website (built for you)</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Google Business Profile Optimization</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Monthly SEO Updates</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Customer Reactivation Campaigns</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Review Generation System</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Google + Meta Ads Management</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Advanced Analytics & Reporting</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Dedicated Account Manager</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Monthly Strategy Call</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Support Level</td><td>Email & chat</td><td>Priority phone</td><td>Same-day</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <div class="faq-q">How fast can I get started?</div>
+      <div class="faq-a">Most clients are fully live within 48 hours of signing up. We handle all the setup — you just need to show up for a 30-minute onboarding call where we connect your phone number and review your workflow. That's it.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What's the $5,000 guarantee, exactly?</div>
+      <div class="faq-a">Simple. If we don't generate at least $5,000 in recovered revenue (from captured leads, reactivated customers, or new appointments) within 60 days of going live, your first month is free. We track every lead and outcome in your dashboard so the numbers are always transparent.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Do I need to be technical to use this?</div>
+      <div class="faq-a">Zero tech required. We build everything, connect everything, and test everything. Your job is to answer calls and show up to appointments. The system runs in the background automatically — you just log in to see results.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Will the AI texts sound robotic to my customers?</div>
+      <div class="faq-a">Not at all. We write your AI messages in your voice — friendly, professional, and on-brand for your business. Customers usually think they're texting with a real receptionist. We'll show you examples on the demo call.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What industries do you work with?</div>
+      <div class="faq-a">We specialize in local service businesses: dental practices, medical spas, roofing companies, HVAC, home builders, law firms, and similar businesses where missed calls = lost revenue. If customers call or fill out forms to book with you, we can help.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I cancel anytime?</div>
+      <div class="faq-a">Yes — no long-term contracts. Cancel with 30 days' notice, no penalty, no hassle. We keep clients by delivering results, not by trapping them in contracts.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What if I already have a website or CRM?</div>
+      <div class="faq-a">We can integrate with most existing tools. The AI system works alongside your current setup, or we can replace pieces that aren't working. We'll assess this on the discovery call and recommend exactly what makes sense for your situation.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Is there a setup fee?</div>
+      <div class="faq-a">No hidden setup fees. The monthly price is the monthly price. We absorb the setup cost because we're confident in the results — once you see what the system does, you'll stay.</div>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Still Not Sure?</h2>
+  <p>Let us show you exactly how many leads you're losing right now. Free, 15-minute call. No pressure.</p>
+  <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" class="cta-btn">📅 Book Your Free Demo</a>
+  <p class="cta-sub">Or <a href="https://bigmojoeinvest-coder.github.io/op20k/free-audit.html" style="color:white; text-decoration:underline;">get your free lead audit</a> first — no call required.</p>
+</section>
+
+<footer>
+  <p style="font-size:18px; font-weight:800; color:white; margin-bottom:8px;">Apex AI Agents</p>
+  <p>Helping local businesses capture every lead and grow on autopilot.</p>
+  <p style="margin-top:16px;">
+    <a href="https://bigmojoeinvest-coder.github.io/op20k/">Home</a> · 
+    <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo">Book a Demo</a> · 
+    <a href="https://bigmojoeinvest-coder.github.io/op20k/free-audit.html">Free Audit</a> · 
+    <a href="mailto:bigmojoeinvest@gmail.com">bigmojoeinvest@gmail.com</a>
+  </p>
+  <p style="margin-top:16px;">© 2026 Apex AI Agents. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
