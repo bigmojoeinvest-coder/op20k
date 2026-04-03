@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spring Clean Special — Deeway2Clean</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Arial, sans-serif; background: #f4f4f4; }
+  .wrapper { max-width: 600px; margin: 0 auto; background: #ffffff; }
+  .header { background: linear-gradient(135deg, #1a5276, #2980b9); padding: 24px 20px; text-align: center; }
+  .header img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid white; margin-bottom: 10px; }
+  .header h1 { color: white; font-size: 26px; font-weight: 900; margin-bottom: 4px; }
+  .header p { color: #d6eaf8; font-size: 14px; }
+  .badge { background: #f39c12; color: white; display: inline-block; padding: 7px 18px; border-radius: 20px; font-weight: 700; font-size: 12px; margin-top: 10px; }
+  .hero { background: #eaf4fc; padding: 24px; text-align: center; border-bottom: 3px solid #2980b9; }
+  .hero h2 { color: #1a5276; font-size: 22px; font-weight: 900; margin-bottom: 8px; }
+  .hero p { color: #555; font-size: 14px; line-height: 1.6; }
+  .photo-section { padding: 0; }
+  .photo-section img { width: 100%; display: block; }
+  .urgency { background: #fdf2e9; border: 2px dashed #f39c12; margin: 16px; border-radius: 10px; padding: 14px; text-align: center; }
+  .urgency p { font-size: 14px; color: #d35400; font-weight: 700; }
+  .section { padding: 24px 20px; }
+  .section h3 { color: #1a5276; font-size: 17px; font-weight: 800; margin-bottom: 14px; text-align: center; }
+  .services { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .service-card { border: 2px solid #2980b9; border-radius: 10px; padding: 14px; text-align: center; }
+  .service-card .name { font-weight: 700; color: #1a5276; font-size: 14px; margin-bottom: 4px; }
+  .service-card .old-price { color: #999; text-decoration: line-through; font-size: 12px; }
+  .service-card .new-price { color: #c0392b; font-size: 20px; font-weight: 900; }
+  .service-card .label { background: #f39c12; color: white; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; display: inline-block; margin-top: 3px; }
+  .cta-section { background: #1a5276; padding: 24px; text-align: center; }
+  .cta-section h3 { color: white; font-size: 18px; font-weight: 900; margin-bottom: 6px; }
+  .cta-section p { color: #d6eaf8; font-size: 13px; margin-bottom: 16px; }
+  .cta-btn { background: #f39c12; color: white; padding: 14px 36px; border-radius: 10px; text-decoration: none; font-weight: 800; font-size: 16px; display: inline-block; }
+  .phone-big { font-size: 24px; font-weight: 900; color: #f39c12; margin-top: 12px; }
+  .services-list { padding: 0 20px 20px; }
+  .services-list h3 { color: #1a5276; font-size: 16px; font-weight: 800; margin-bottom: 10px; }
+  .service-item { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 1px solid #eee; font-size: 13px; color: #333; }
+  .service-item::before { content: "✅"; font-size: 14px; }
+  .footer { background: #1a5276; padding: 20px 24px; text-align: center; color: #d6eaf8; font-size: 12px; }
+  .footer a { color: #f39c12; text-decoration: none; }
+  @media (max-width: 480px) { .services { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <img src="https://bigmojoeinvest-coder.github.io/op20k/deeway2clean/images/services-flyer.jpg" alt="Deeway2Clean" style="width:80px;height:80px;object-fit:cover;border-radius:50%;border:3px solid white;margin-bottom:10px;">
+    <h1>🧹 Deeway2Clean</h1>
+    <p>Professional Pressure Washing & Painting</p>
+    <p>Camden & Gloucester County, South Jersey</p>
+    <div class="badge">🌸 SPRING CLEAN SPECIAL — LIMITED SLOTS</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h2>Your Home Deserves a Fresh Start This Spring!</h2>
+    <p>Winter left dirt, mold, and grime on your home's exterior, driveway, and deck.<br>
+    We'll make it look brand new — fast, professional, and guaranteed.</p>
+  </div>
+
+  <!-- BEFORE/AFTER PHOTO -->
+  <div class="photo-section">
+    <img src="https://bigmojoeinvest-coder.github.io/op20k/deeway2clean/images/before-after-house.jpg" alt="Before and After House Washing by Deeway2Clean">
+  </div>
+
+  <!-- SECOND PHOTO -->
+  <div class="photo-section">
+    <img src="https://bigmojoeinvest-coder.github.io/op20k/deeway2clean/images/house-wash-ba.jpg" alt="House Washing Before and After">
+  </div>
+
+  <!-- URGENCY -->
+  <div class="urgency">
+    <p>⏰ Only 20 Spring Slots Remaining — Book by April 30th to Lock In Special Pricing!</p>
+  </div>
+
+  <!-- SERVICES/PRICING -->
+  <div class="section">
+    <h3>🌸 Spring Specials — Save Up to 35%</h3>
+    <div class="services">
+      <div class="service-card">
+        <div class="name">Driveway Wash</div>
+        <div class="old-price">Was $149</div>
+        <div class="new-price">$99</div>
+        <div class="label">SAVE $50</div>
+      </div>
+      <div class="service-card">
+        <div class="name">House Wash</div>
+        <div class="old-price">Was $299</div>
+        <div class="new-price">$199</div>
+        <div class="label">SAVE $100</div>
+      </div>
+      <div class="service-card">
+        <div class="name">Deck/Patio</div>
+        <div class="old-price">Was $149</div>
+        <div class="new-price">$99</div>
+        <div class="label">SAVE $50</div>
+      </div>
+      <div class="service-card">
+        <div class="name">🔥 House + Driveway Bundle</div>
+        <div class="old-price">Was $399</div>
+        <div class="new-price">$269</div>
+        <div class="label">BEST VALUE</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h3>Ready to Book Your Spring Clean?</h3>
+    <p>Free quotes. Same-week availability. 100% satisfaction guaranteed.</p>
+    <a href="mailto:Deeway2clean@gmail.com" class="cta-btn">📅 Get Your Free Quote</a>
+    <p style="margin-top: 14px; color: #d6eaf8; font-size: 13px;">Or call/text us directly:</p>
+    <div class="phone-big">(856) 485-0025</div>
+    <p style="margin-top: 8px; color: #d6eaf8; font-size: 12px;">⭐⭐⭐⭐⭐ <a href="https://share.google/18vBqdsU9Tc31ctAF" style="color:#f39c12;">See Our Google Reviews</a></p>
+  </div>
+
+  <!-- SERVICES LIST -->
+  <div class="services-list" style="padding-top:20px;">
+    <h3>What We Clean</h3>
+    <div class="service-item">House Exterior & Siding Wash</div>
+    <div class="service-item">Driveway & Sidewalk Pressure Washing</div>
+    <div class="service-item">Deck & Patio Cleaning</div>
+    <div class="service-item">Fence & Window Cleaning</div>
+    <div class="service-item">Roof Soft Washing</div>
+    <div class="service-item">Gutter Cleaning</div>
+    <div class="service-item">Interior & Exterior Painting</div>
+    <div class="service-item">Commercial Pressure Washing</div>
+  </div>
+
+  <!-- DRIVEWAY PHOTO -->
+  <div class="photo-section">
+    <img src="https://bigmojoeinvest-coder.github.io/op20k/deeway2clean/images/driveway-clean.jpg" alt="Clean Driveway by Deeway2Clean">
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p style="font-size:16px;font-weight:800;color:white;margin-bottom:6px;">🧹 Deeway2Clean</p>
+    <p>Professional Pressure Washing & Painting</p>
+    <p>Camden & Gloucester County, South Jersey</p>
+    <p style="margin-top:8px;">
+      <a href="tel:8564850025">(856) 485-0025</a> &nbsp;|&nbsp;
+      <a href="mailto:Deeway2clean@gmail.com">Deeway2clean@gmail.com</a>
+    </p>
+    <p style="margin-top:8px;"><a href="https://share.google/18vBqdsU9Tc31ctAF">⭐ Leave Us a Google Review</a></p>
+    <p style="margin-top:10px;font-size:11px;color:#aed6f1;">You received this because you own a property in our service area. Reply "STOP" to unsubscribe.</p>
+  </div>
+
+</div>
+</body>
+</html>
