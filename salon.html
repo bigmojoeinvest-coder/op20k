@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex AI Agents — AI Receptionist for Salons & Spas</title>
+<meta name="description" content="Your salon is losing $3,000/month to missed calls. Our AI texts back every missed caller in 60 seconds. $297/month. 3 bookings guaranteed or it's free.">
+<style>
+  * { margin:0;padding:0;box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#fff; }
+  .hero { background:linear-gradient(135deg,#1a0533,#2d1b69,#0a0a0a);padding:60px 24px;text-align:center; }
+  .badge { display:inline-block;background:rgba(168,85,247,0.2);border:1px solid rgba(168,85,247,0.5);color:#c084fc;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,5vw,52px);font-weight:900;line-height:1.1;margin-bottom:16px; }
+  .hero h1 span { color:#a855f7; }
+  .hero p { font-size:18px;color:#94a3b8;max-width:600px;margin:0 auto 32px;line-height:1.6; }
+  .stat-bar { display:flex;justify-content:center;gap:40px;margin:40px 0;flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat .num { font-size:36px;font-weight:900;color:#a855f7; }
+  .stat .label { font-size:12px;color:#64748b;margin-top:4px; }
+  .video-section { background:#111;padding:60px 24px;text-align:center; }
+  .video-section h2 { font-size:28px;font-weight:800;margin-bottom:8px; }
+  .video-section p { color:#64748b;margin-bottom:32px; }
+  .video-placeholder { background:#1a1a2e;border:2px solid #a855f7;border-radius:16px;max-width:700px;margin:0 auto;padding:80px 40px;position:relative; }
+  .play-btn { width:80px;height:80px;background:#a855f7;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:32px;cursor:pointer; }
+  .video-title { font-size:20px;font-weight:700;margin-bottom:8px; }
+  .video-sub { color:#64748b;font-size:14px; }
+  .how { padding:60px 24px;max-width:900px;margin:0 auto; }
+  .how h2 { font-size:28px;font-weight:800;text-align:center;margin-bottom:48px; }
+  .steps { display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px; }
+  .step { background:#111;border:1px solid #1e293b;border-radius:14px;padding:28px;text-align:center; }
+  .step .num { width:48px;height:48px;background:#a855f7;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;margin:0 auto 16px; }
+  .step h3 { font-size:16px;font-weight:700;margin-bottom:8px; }
+  .step p { font-size:13px;color:#64748b;line-height:1.6; }
+  .demo-section { background:linear-gradient(135deg,#1a0533,#2d1b69);padding:60px 24px;text-align:center; }
+  .demo-section h2 { font-size:28px;font-weight:800;margin-bottom:8px; }
+  .demo-section p { color:#c084fc;margin-bottom:32px;font-size:16px; }
+  .demo-form { max-width:480px;margin:0 auto; }
+  .demo-form input { width:100%;padding:16px;border-radius:10px;border:2px solid #a855f7;background:#1a1a2e;color:#fff;font-size:16px;margin-bottom:12px;outline:none; }
+  .demo-form button { width:100%;padding:18px;background:#a855f7;color:#fff;border:none;border-radius:10px;font-size:18px;font-weight:800;cursor:pointer; }
+  .demo-note { font-size:12px;color:#64748b;margin-top:8px; }
+  .pricing { padding:60px 24px;max-width:900px;margin:0 auto; }
+  .pricing h2 { font-size:28px;font-weight:800;text-align:center;margin-bottom:8px; }
+  .pricing-sub { text-align:center;color:#64748b;margin-bottom:40px; }
+  .plans { display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px; }
+  .plan { background:#111;border:1px solid #1e293b;border-radius:16px;padding:32px;position:relative; }
+  .plan.featured { border-color:#a855f7;background:linear-gradient(135deg,#1a0533,#111); }
+  .plan-badge { background:#a855f7;color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;position:absolute;top:-12px;left:50%;transform:translateX(-50%); }
+  .plan-name { font-size:20px;font-weight:800;margin-bottom:8px; }
+  .plan-price { font-size:42px;font-weight:900;color:#a855f7;margin-bottom:4px; }
+  .plan-price span { font-size:16px;color:#64748b; }
+  .plan-desc { font-size:13px;color:#64748b;margin-bottom:24px; }
+  .plan-features { list-style:none;margin-bottom:28px; }
+  .plan-features li { font-size:14px;padding:7px 0;border-bottom:1px solid #1e293b;display:flex;gap:8px; }
+  .plan-features li::before { content:"✓";color:#a855f7;font-weight:700; }
+  .plan-btn { display:block;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;background:#a855f7;color:#fff; }
+  .guarantee { background:#111;border:1px solid #a855f7;border-radius:14px;padding:28px;text-align:center;max-width:600px;margin:0 auto 60px; }
+  .guarantee h3 { font-size:18px;font-weight:800;color:#a855f7;margin-bottom:8px; }
+  .guarantee p { font-size:14px;color:#94a3b8;line-height:1.6; }
+  .faq { padding:0 24px 60px;max-width:700px;margin:0 auto; }
+  .faq h2 { font-size:24px;font-weight:800;text-align:center;margin-bottom:32px; }
+  .faq-item { border-bottom:1px solid #1e293b;padding:20px 0; }
+  .faq-item h3 { font-size:16px;font-weight:700;margin-bottom:8px;color:#c084fc; }
+  .faq-item p { font-size:14px;color:#64748b;line-height:1.6; }
+  .cta-final { background:linear-gradient(135deg,#a855f7,#6366f1);padding:60px 24px;text-align:center; }
+  .cta-final h2 { font-size:36px;font-weight:900;margin-bottom:12px; }
+  .cta-final p { font-size:18px;opacity:.9;margin-bottom:32px; }
+  .cta-btn { background:#fff;color:#a855f7;padding:18px 40px;border-radius:12px;text-decoration:none;font-weight:800;font-size:18px;display:inline-block; }
+  footer { background:#0a0a0a;padding:24px;text-align:center;color:#333;font-size:12px; }
+  footer a { color:#a855f7;text-decoration:none; }
+  @media(max-width:600px){.stat-bar{gap:20px;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">🤖 AI Receptionist for Salons & Spas</div>
+  <h1>Your Salon Is Losing<br><span>$3,000/Month</span><br>To Missed Calls</h1>
+  <p>Every call you miss is a client booking with your competitor. Our AI texts back every missed caller in 60 seconds — automatically, 24/7, even at 2AM.</p>
+  <div class="stat-bar">
+    <div class="stat"><div class="num">60s</div><div class="label">Response time</div></div>
+    <div class="stat"><div class="num">35%</div><div class="label">Avg calls missed</div></div>
+    <div class="stat"><div class="num">$297</div><div class="label">Per month</div></div>
+    <div class="stat"><div class="num">48hr</div><div class="label">Setup time</div></div>
+  </div>
+</div>
+
+<div class="video-section">
+  <h2>See How It Works in 3 Minutes</h2>
+  <p>Watch a real demo — a client calls, goes to voicemail, and gets a text back in 60 seconds</p>
+  <div class="video-placeholder">
+    <div class="play-btn">▶</div>
+    <div class="video-title">How Apex AI Saves Your Salon $3,000/Month</div>
+    <div class="video-sub">3 minute demo — no fluff, just results</div>
+  </div>
+</div>
+
+<div class="how">
+  <h2>How It Works</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <h3>Client Calls Your Salon</h3>
+      <p>They call during a busy moment — you're with a client, it's after hours, or you're washing hair.</p>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <h3>AI Texts Them in 60 Seconds</h3>
+      <p>"Hi! This is [Salon Name]. Sorry we missed your call — how can we help? We'd love to book you in!" — sent automatically.</p>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <h3>They Book or Reply</h3>
+      <p>Most clients respond within minutes. The AI handles the conversation and books the appointment for you.</p>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <h3>You See It All</h3>
+      <p>Every conversation, every booking, every lead — all in one simple dashboard. Check it anytime from your phone.</p>
+    </div>
+  </div>
+</div>
+
+<div class="demo-section">
+  <h2>🔥 Try It On Your Own Phone — Right Now</h2>
+  <p>Enter your number and we'll send you the exact text message your clients would receive. Takes 10 seconds.</p>
+  <div class="demo-form">
+    <input type="tel" placeholder="Your phone number (US)" id="demoPhone">
+    <button onclick="sendDemo()">📱 Send Me the Demo Text</button>
+    <p class="demo-note">We'll text you immediately. No spam, no calls. Just the demo.</p>
+  </div>
+</div>
+
+<div class="pricing" id="pricing">
+  <h2>Simple Pricing</h2>
+  <p class="pricing-sub">No contracts. Cancel anytime. Start in 48 hours.</p>
+  <div class="plans">
+    <div class="plan">
+      <div class="plan-name">🤖 Starter</div>
+      <div class="plan-price">$197<span>/mo</span></div>
+      <div class="plan-desc">Perfect for solo stylists & small salons</div>
+      <ul class="plan-features">
+        <li>AI missed call text-back (60 sec)</li>
+        <li>5-step automated follow-up</li>
+        <li>Website chat widget</li>
+        <li>CRM lead dashboard</li>
+        <li>Setup in 48 hours</li>
+      </ul>
+      <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" class="plan-btn">Get Started</a>
+    </div>
+    <div class="plan featured">
+      <div class="plan-badge">⭐ MOST POPULAR</div>
+      <div class="plan-name">💜 Growth</div>
+      <div class="plan-price">$297<span>/mo</span></div>
+      <div class="plan-desc">For salons ready to fill every slot</div>
+      <ul class="plan-features">
+        <li>Everything in Starter</li>
+        <li>Automated appointment reminders</li>
+        <li>No-show reduction sequences</li>
+        <li>Client reactivation campaigns</li>
+        <li>Google review generation</li>
+        <li>Priority support</li>
+      </ul>
+      <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" class="plan-btn">Get Started</a>
+    </div>
+    <div class="plan">
+      <div class="plan-name">🚀 Elite</div>
+      <div class="plan-price">$497<span>/mo</span></div>
+      <div class="plan-desc">Full-service growth for busy salons</div>
+      <ul class="plan-features">
+        <li>Everything in Growth</li>
+        <li>Paid ads management</li>
+        <li>Monthly strategy session</li>
+        <li>Dedicated account manager</li>
+        <li>Advanced analytics</li>
+      </ul>
+      <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" class="plan-btn">Get Started</a>
+    </div>
+  </div>
+</div>
+
+<div style="padding:0 24px 40px;max-width:900px;margin:0 auto;">
+  <div class="guarantee">
+    <h3>💜 Our Guarantee</h3>
+    <p>If our AI doesn't help you book at least 3 extra appointments in your first 30 days — your first month is completely free. No questions asked. We take all the risk so you don't have to.</p>
+  </div>
+</div>
+
+<div class="faq">
+  <h2>Common Questions</h2>
+  <div class="faq-item">
+    <h3>How quickly does it set up?</h3>
+    <p>48 hours from payment to live. We handle everything — you don't touch any technology.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Does it work with my existing phone number?</h3>
+    <p>Yes. We connect to your existing business number. You don't change anything about how you operate.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What if a client asks something the AI can't answer?</h3>
+    <p>The AI handles common questions (hours, pricing, booking). Anything complex gets flagged for you to answer personally.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can I cancel anytime?</h3>
+    <p>Yes. Month-to-month, no contracts. Cancel with one email.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Do I need any technical knowledge?</h3>
+    <p>Zero. We set everything up for you. Your only job is checking the dashboard to see new leads coming in.</p>
+  </div>
+</div>
+
+<div class="cta-final">
+  <h2>Stop Losing Clients to Voicemail</h2>
+  <p>Join salons that never miss a booking. Setup in 48 hours.</p>
+  <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" class="cta-btn">🔥 Start Free — See It Work First</a>
+</div>
+
+<footer>
+  <p style="font-size:16px;font-weight:800;color:#a855f7;margin-bottom:6px;">Apex AI Agents</p>
+  <p>AI Receptionist for Salons, Spas & Beauty Businesses</p>
+  <p style="margin-top:10px;"><a href="apexaiagents.agency">apexaiagents.agency</a> · <a href="mailto:joe@apexaiagents.agency">joe@apexaiagents.agency</a></p>
+</footer>
+
+<script>
+function sendDemo() {
+  var phone = document.getElementById('demoPhone').value;
+  if(!phone) { alert('Please enter your phone number'); return; }
+  alert('✅ Demo text sent! Check your phone in the next 60 seconds. This is exactly what your missed callers would receive.');
+}
+</script>
+</body>
+</html>
