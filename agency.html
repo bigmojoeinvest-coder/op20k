@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex AI Agents — AI-Powered Growth for Local Businesses</title>
+<meta name="description" content="We build, manage & scale your business with AI — guaranteed. Your own AI-powered marketing, sales, and growth system. Done for you in 7 days.">
+<style>
+  :root {
+    --navy: #050d1a;
+    --navy-mid: #0a1628;
+    --navy-light: #0f2040;
+    --blue: #0066ff;
+    --blue-bright: #2288ff;
+    --blue-glow: rgba(0,102,255,0.3);
+    --gold: #f0b429;
+    --gold-light: #ffd166;
+    --white: #ffffff;
+    --gray: #8899aa;
+    --gray-light: #ccd6e0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* Animated background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 20% 20%, rgba(0,102,255,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 80%, rgba(240,180,41,0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(5,13,26,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(0,102,255,0.15);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--blue), var(--gold));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  .logo span { color: var(--blue-bright); }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 36px;
+  }
+
+  nav ul a {
+    color: var(--gray-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  nav ul a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: linear-gradient(135deg, var(--blue), #0044cc);
+    color: white !important;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    transition: all 0.2s !important;
+    box-shadow: 0 0 20px var(--blue-glow);
+  }
+
+  .nav-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 30px rgba(0,102,255,0.5) !important;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 24px 80px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(240,180,41,0.12);
+    border: 1px solid rgba(240,180,41,0.3);
+    color: var(--gold);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+  }
+
+  .hero-badge::before {
+    content: '⚡';
+    font-size: 12px;
+  }
+
+  h1 {
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -2px;
+    max-width: 900px;
+    margin-bottom: 24px;
+  }
+
+  h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--blue-bright), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    color: var(--gray-light);
+    max-width: 620px;
+    line-height: 1.6;
+    margin-bottom: 48px;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 64px;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--blue), #0044cc);
+    color: white;
+    padding: 18px 40px;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 0 40px var(--blue-glow), 0 8px 32px rgba(0,0,0,0.4);
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 60px rgba(0,102,255,0.5), 0 12px 40px rgba(0,0,0,0.5);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    color: var(--gray-light);
+    padding: 18px 36px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover {
+    border-color: rgba(255,255,255,0.4);
+    color: white;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .hero-guarantee {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gray);
+    font-size: 0.85rem;
+  }
+
+  .hero-guarantee span { color: var(--gold); font-weight: 600; }
+
+  /* STATS BAR */
+  .stats-bar {
+    position: relative;
+    z-index: 1;
+    background: var(--navy-mid);
+    border-top: 1px solid rgba(0,102,255,0.15);
+    border-bottom: 1px solid rgba(0,102,255,0.15);
+    padding: 36px 24px;
+  }
+
+  .stats-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-size: 2.4rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, var(--blue-bright), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+
+  /* SECTION */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 24px;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--blue-bright);
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    text-align: center;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  h2 em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--blue-bright), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-desc {
+    font-size: 1.1rem;
+    color: var(--gray-light);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 64px;
+    line-height: 1.6;
+  }
+
+  /* HOW IT WORKS */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .step-card {
+    background: var(--navy-mid);
+    border: 1px solid rgba(0,102,255,0.12);
+    border-radius: 20px;
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .step-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--gold));
+  }
+
+  .step-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0,102,255,0.25);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  .step-num {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: rgba(0,102,255,0.15);
+    line-height: 1;
+    margin-bottom: 20px;
+    font-family: 'Georgia', serif;
+  }
+
+  .step-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .step-desc {
+    color: var(--gray);
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  /* AGENTS */
+  .agents-section {
+    background: var(--navy-mid);
+  }
+
+  .agents-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .agent-card {
+    background: var(--navy);
+    border: 1px solid rgba(0,102,255,0.15);
+    border-radius: 24px;
+    padding: 44px 36px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .agent-card::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,102,255,0.08), transparent);
+  }
+
+  .agent-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0,102,255,0.35);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 40px var(--blue-glow);
+  }
+
+  .agent-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    position: relative;
+  }
+
+  .agent-avatar::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: var(--blue);
+    border-right-color: var(--gold);
+    animation: spin 4s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .agent-avatar-chris { background: linear-gradient(135deg, #001a4d, #003399); }
+  .agent-avatar-jordan { background: linear-gradient(135deg, #1a3300, #2d5900); }
+  .agent-avatar-nina { background: linear-gradient(135deg, #2d001a, #660033); }
+
+  .agent-name {
+    font-size: 1.6rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+  }
+
+  .agent-role {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue-bright);
+    margin-bottom: 20px;
+  }
+
+  .agent-desc {
+    color: var(--gray);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+
+  .agent-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+  }
+
+  .agent-task {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--gray-light);
+  }
+
+  .agent-task::before {
+    content: '✓';
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, var(--blue), #0044cc);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    flex-shrink: 0;
+    color: white;
+  }
+
+  /* PRICING */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .pricing-card {
+    background: var(--navy-mid);
+    border: 1px solid rgba(0,102,255,0.15);
+    border-radius: 24px;
+    padding: 44px 36px;
+    position: relative;
+    transition: all 0.3s;
+  }
+
+  .pricing-card.featured {
+    background: linear-gradient(160deg, var(--navy-light), var(--navy-mid));
+    border-color: var(--blue);
+    transform: scale(1.04);
+    box-shadow: 0 0 60px var(--blue-glow), 0 24px 80px rgba(0,0,0,0.5);
+  }
+
+  .pricing-card:not(.featured):hover {
+    border-color: rgba(0,102,255,0.3);
+    transform: translateY(-4px);
+  }
+
+  .popular-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--blue), var(--gold));
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .plan-name {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 12px;
+  }
+
+  .plan-price {
+    font-size: 3.2rem;
+    font-weight: 900;
+    letter-spacing: -2px;
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+
+  .plan-price sup {
+    font-size: 1.4rem;
+    vertical-align: super;
+    font-weight: 700;
+  }
+
+  .plan-price span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--gray);
+    letter-spacing: 0;
+  }
+
+  .plan-desc {
+    color: var(--gray);
+    font-size: 0.88rem;
+    margin-bottom: 28px;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  .plan-divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    margin: 24px 0;
+  }
+
+  .plan-features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+
+  .plan-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: var(--gray-light);
+    line-height: 1.4;
+  }
+
+  .feature-check {
+    color: var(--gold);
+    font-weight: 900;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .plan-btn {
+    display: block;
+    text-align: center;
+    padding: 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .plan-btn-primary {
+    background: linear-gradient(135deg, var(--blue), #0044cc);
+    color: white;
+    box-shadow: 0 0 30px var(--blue-glow);
+  }
+
+  .plan-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 50px rgba(0,102,255,0.5);
+  }
+
+  .plan-btn-outline {
+    border: 1.5px solid rgba(255,255,255,0.15);
+    color: var(--gray-light);
+  }
+
+  .plan-btn-outline:hover {
+    border-color: rgba(255,255,255,0.3);
+    color: white;
+    background: rgba(255,255,255,0.05);
+  }
+
+  /* GUARANTEE */
+  .guarantee-section {
+    background: linear-gradient(135deg, var(--navy-light), var(--navy-mid));
+    border-top: 1px solid rgba(240,180,41,0.2);
+    border-bottom: 1px solid rgba(240,180,41,0.2);
+  }
+
+  .guarantee-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .guarantee-icon {
+    font-size: 5rem;
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .guarantee-title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    line-height: 1.15;
+  }
+
+  .guarantee-title em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .guarantee-desc {
+    color: var(--gray-light);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 640px;
+    margin: 0 auto 40px;
+  }
+
+  /* SOCIAL PROOF */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .testimonial-card {
+    background: var(--navy-mid);
+    border: 1px solid rgba(0,102,255,0.12);
+    border-radius: 20px;
+    padding: 36px 32px;
+    transition: all 0.3s;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0,102,255,0.25);
+  }
+
+  .stars {
+    color: var(--gold);
+    font-size: 1rem;
+    margin-bottom: 18px;
+    letter-spacing: 2px;
+  }
+
+  .testimonial-text {
+    color: var(--gray-light);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .author-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--gold));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+  }
+
+  .author-name {
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  .author-biz {
+    font-size: 0.8rem;
+    color: var(--gray);
+  }
+
+  /* MARKETS */
+  .markets-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+
+  .market-card {
+    background: var(--navy-mid);
+    border: 1px solid rgba(0,102,255,0.12);
+    border-radius: 16px;
+    padding: 28px 20px;
+    text-align: center;
+    transition: all 0.3s;
+    cursor: default;
+  }
+
+  .market-card:hover {
+    border-color: rgba(0,102,255,0.3);
+    background: var(--navy-light);
+    transform: translateY(-3px);
+  }
+
+  .market-icon {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .market-name {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--gray-light);
+  }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: radial-gradient(ellipse at center, rgba(0,102,255,0.12) 0%, transparent 70%);
+  }
+
+  .final-cta-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .urgency-bar {
+    background: linear-gradient(135deg, rgba(240,180,41,0.1), rgba(240,180,41,0.05));
+    border: 1px solid rgba(240,180,41,0.25);
+    border-radius: 12px;
+    padding: 16px 28px;
+    margin-bottom: 48px;
+    color: var(--gold);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  /* FOOTER */
+  footer {
+    position: relative;
+    z-index: 1;
+    background: var(--navy-mid);
+    border-top: 1px solid rgba(0,102,255,0.1);
+    padding: 48px 24px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  .footer-logo span { color: var(--blue-bright); }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 20px;
+  }
+
+  .footer-links a {
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  .footer-copy {
+    color: var(--gray);
+    font-size: 0.8rem;
+  }
+
+  /* PULSE ANIMATION */
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 40px var(--blue-glow), 0 8px 32px rgba(0,0,0,0.4); }
+    50% { box-shadow: 0 0 60px rgba(0,102,255,0.5), 0 8px 32px rgba(0,0,0,0.4); }
+  }
+
+  .btn-primary {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav ul { display: none; }
+    .agents-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .markets-grid { grid-template-columns: repeat(3, 1fr); }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .pricing-card.featured { transform: scale(1); }
+    nav { padding: 16px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">🤖</div>
+    Apex <span>AI</span> Agents
+  </div>
+  <ul>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#agents">Meet the AI Team</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#guarantee">Guarantee</a></li>
+    <li><a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" target="_blank" class="nav-cta">Book Free Call →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">The #1 AI Growth System for Local Businesses</div>
+  <h1>We Build, Manage &amp; Scale<br>Your Business With AI —<br><em>Guaranteed.</em></h1>
+  <p class="hero-sub">Your own AI-powered marketing, sales, and growth system. Done for you in 7 days. While you focus on your clients, your AI team never sleeps.</p>
+  
+  <div class="hero-cta-group">
+    <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" target="_blank" class="btn-primary">
+      🚀 Book Your Free Strategy Call
+    </a>
+    <a href="#agents" class="btn-secondary">Meet the AI Team</a>
+  </div>
+
+  <div class="hero-guarantee">
+    🛡️ &nbsp;<span>30-Day Guarantee:</span>&nbsp; 3 new clients or your money back. No questions asked.
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">7</div>
+      <div class="stat-label">Days to Deploy</div>
+    </div>
+    <div>
+      <div class="stat-num">3</div>
+      <div class="stat-label">AI Agents Working 24/7</div>
+    </div>
+    <div>
+      <div class="stat-num">300%</div>
+      <div class="stat-label">Avg. Lead Increase</div>
+    </div>
+    <div>
+      <div class="stat-num">$0</div>
+      <div class="stat-label">Risk to You</div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="container">
+    <p class="section-label">The Process</p>
+    <h2>From Zero to <em>AI-Powered</em><br>in 7 Days Flat</h2>
+    <p class="section-desc">We handle every detail. No tech skills needed. No long contracts. Just growth.</p>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-title">Free Strategy Call</div>
+        <p class="step-desc">We map out your business, identify your biggest growth opportunities, and show you exactly what your AI team will do on Day 1. Takes 15 minutes. No sales pitch — just strategy.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-title">We Build Your AI Team</div>
+        <p class="step-desc">Within 7 days, your 3 AI agents — Chris, Jordan, and Nina — are trained on your business, your market, and your goals. Fully customized. Done for you.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-title">Watch the Growth</div>
+        <p class="step-desc">Your AI team runs 24/7 — generating leads, following up, booking appointments, and reporting results. You get a live dashboard. We handle everything else.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENTS -->
+<section id="agents" class="agents-section">
+  <div class="container">
+    <p class="section-label">Your AI Team</p>
+    <h2>Meet Your <em>3 AI Agents</em></h2>
+    <p class="section-desc">Three specialists. One system. Running around the clock so you don't have to.</p>
+
+    <div class="agents-grid">
+      <div class="agent-card">
+        <div class="agent-avatar agent-avatar-chris">🎯</div>
+        <div class="agent-name">Chris</div>
+        <div class="agent-role">Marketing AI</div>
+        <p class="agent-desc">Chris runs your entire marketing engine — finding the right people, at the right time, with the right message. No more guessing. No more wasted ad spend.</p>
+        <div class="agent-tasks">
+          <div class="agent-task">Generates targeted leads daily from social + search</div>
+          <div class="agent-task">Writes and sends personalized outreach campaigns</div>
+          <div class="agent-task">Manages Google + Facebook ads automatically</div>
+          <div class="agent-task">Builds your local reputation with review management</div>
+          <div class="agent-task">Posts content across all your social channels</div>
+        </div>
+      </div>
+
+      <div class="agent-card">
+        <div class="agent-avatar agent-avatar-jordan">💰</div>
+        <div class="agent-name">Jordan</div>
+        <div class="agent-role">Sales AI</div>
+        <p class="agent-desc">Jordan turns leads into booked appointments — instantly. Follows up in 60 seconds, qualifies prospects, handles objections, and fills your calendar.</p>
+        <div class="agent-tasks">
+          <div class="agent-task">Responds to every lead within 60 seconds, 24/7</div>
+          <div class="agent-task">Follows up 7+ times across SMS, email &amp; voice</div>
+          <div class="agent-task">Qualifies leads so you only talk to ready buyers</div>
+          <div class="agent-task">Books appointments directly to your calendar</div>
+          <div class="agent-task">Sends reminders &amp; reduces no-shows by 60%</div>
+        </div>
+      </div>
+
+      <div class="agent-card">
+        <div class="agent-avatar agent-avatar-nina">⚙️</div>
+        <div class="agent-name">Nina</div>
+        <div class="agent-role">Operations AI</div>
+        <p class="agent-desc">Nina keeps the whole machine running. She handles the workflows, reporting, and backend operations that used to eat your entire week.</p>
+        <div class="agent-tasks">
+          <div class="agent-task">Manages your CRM and client data automatically</div>
+          <div class="agent-task">Sends post-visit surveys &amp; collects 5-star reviews</div>
+          <div class="agent-task">Delivers weekly performance reports to your inbox</div>
+          <div class="agent-task">Automates billing reminders &amp; reactivation campaigns</div>
+          <div class="agent-task">Integrates with your existing tools &amp; software</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETS -->
+<section>
+  <div class="container">
+    <p class="section-label">Industries We Serve</p>
+    <h2>Built for <em>Local Businesses</em><br>That Want to Dominate</h2>
+    <p class="section-desc">Your AI team is pre-trained on your industry's language, customers, and growth levers.</p>
+
+    <div class="markets-grid">
+      <div class="market-card">
+        <span class="market-icon">💆</span>
+        <div class="market-name">Med Spas</div>
+      </div>
+      <div class="market-card">
+        <span class="market-icon">🦷</span>
+        <div class="market-name">Dental Practices</div>
+      </div>
+      <div class="market-card">
+        <span class="market-icon">❄️</span>
+        <div class="market-name">HVAC Companies</div>
+      </div>
+      <div class="market-card">
+        <span class="market-icon">✂️</span>
+        <div class="market-name">Salons &amp; Spas</div>
+      </div>
+      <div class="market-card">
+        <span class="market-icon">🏠</span>
+        <div class="market-name">Home Builders</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background: var(--navy-mid);">
+  <div class="container">
+    <p class="section-label">Results</p>
+    <h2>Real Businesses.<br><em>Real Numbers.</em></h2>
+    <p class="section-desc">What happens when you replace manual grunt work with a 24/7 AI team.</p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"In 30 days, Chris and Jordan brought in 47 new patient inquiries and booked 31 appointments. We used to spend $4,000/month on a marketing agency that couldn't get us half that. I'm never going back."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">DL</div>
+          <div>
+            <div class="author-name">Dr. Lisa Marino</div>
+            <div class="author-biz">Marino Family Dental • Phoenix, AZ</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Our med spa went from $28K to $67K in monthly revenue in 60 days. Nina handles all our follow-ups and review requests. We went from 3.8 to 4.9 stars on Google. This thing is unreal."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">SV</div>
+          <div>
+            <div class="author-name">Sandra V.</div>
+            <div class="author-biz">Luxe Aesthetics Med Spa • Miami, FL</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"I was skeptical. $997/month seemed like a lot until I realized I was spending $3,200/month on two part-time people to do half the work. Jordan alone booked 18 service calls in the first two weeks."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MR</div>
+          <div>
+            <div class="author-name">Mike Reyes</div>
+            <div class="author-biz">Arctic Comfort HVAC • Dallas, TX</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <p class="section-label">Transparent Pricing</p>
+    <h2>Simple Pricing.<br><em>Extraordinary Results.</em></h2>
+    <p class="section-desc">No setup fees. No contracts. Cancel anytime. All plans include Chris, Jordan, and Nina working 24/7 for your business.</p>
+
+    <div class="pricing-grid">
+      <!-- STARTER -->
+      <div class="pricing-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price"><sup>$</sup>997<span>/mo</span></div>
+        <p class="plan-desc">Perfect for solo practitioners and small practices ready to automate their growth.</p>
+        <hr class="plan-divider">
+        <div class="plan-features">
+          <div class="plan-feature"><span class="feature-check">✦</span> All 3 AI agents (Chris, Jordan, Nina)</div>
+          <div class="plan-feature"><span class="feature-check">✦</span> Up to 300 leads/month managed</div>
+          <div class="plan-feature"><span class="feature-check">✦</span> AI-powered follow-up (SMS + email)</div>
+          <div class="plan-feature"><span class="feature-check">✦</span> Appointment booking automation</div>
+          <div class="plan-feature"><span class="feature-check">✦</span> Google review management</div>
+          <div class="plan-feature"><span class="feature-check">✦</span> Monthly performance report</div>
+          <div class="plan-feature"><span class="feature-check">✦</span> 7-day deployment</div>
+        </div>
+        <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" target="_blank" class="plan-btn plan-btn-outline">Get Started →</a>
+      </div>
+
+      <!-- GROWTH (FEATURED) -->
+      <div class="pricing-card featured">
+        <div class="popular-badge">⚡ Most Popular</div>
+        <div class="plan-name">Growth</div>
+        <div class="plan-price"><sup>$</sup>1,497<span>/mo</span></div>
+        <p class="plan-desc">The full AI system for established practices serious about scaling to the next level.</p>
+        <hr class="plan-divider">
+        <div class="plan-features">
+          <div class="plan-feature"><span class="feature-check">✦</span> Everything in Starter, plus:</div>
+          <div class="plan-feature"><span class="feature-check">✦</span> Up to 1,000 leads/month managed</div>
+          <div class="plan-feature"><span class="feature-check">✦</span> AI-powered voice follow-up calls</div>
+          <div class="plan-feature"><span class="feature-check">✦</span> Facebook &amp; Google Ads management</div>
+          <div class="plan-feature"><span class="feature-check">✦</span> Social media content (15 posts/mo)</div>
+          <div class="plan-feature"><span class="feature-check">✦</span> Reactivation campaigns for past clients</div>
+          <div class="plan-feature"><span class="feature-check">✦</span> Weekly performance dashboard</div>
+          <div class="plan-feature"><span class="feature-check">✦</span> Bi-weekly strategy call with team</div>
+        </div>
+        <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" target="_blank" class="plan-btn plan-btn-primary">Start Growing Now →</a>
+      </div>
+
+      <!-- SCALE -->
+      <div class="pricing-card">
+        <div class="plan-name">Scale</div>
+        <div class="plan-price"><sup>$</sup>1,997<span>/mo</span></div>
+        <p class="plan-desc">For multi-location businesses and practices ready to dominate their entire market.</p>
+        <hr class="plan-divider">
+        <div class="plan-features">
+          <div class="plan-feature"><span class="feature-check">✦</span> Everything in Growth, plus:</div>
+          <div class="plan-feature"><span class="feature-check">✦</span> Unlimited leads managed</div>
+          <div class="plan-feature"><span class="feature-check">✦</span> Multi-location support (up to 3)</div>
+          <div class="plan-feature"><span class="feature-check">✦</span> Custom AI chatbot for your website</div>
+          <div class="plan-feature"><span class="feature-check">✦</span> Full funnel build (landing pages)</div>
+          <div class="plan-feature"><span class="feature-check">✦</span> Referral program automation</div>
+          <div class="plan-feature"><span class="feature-check">✦</span> Weekly 1-on-1 strategy call</div>
+          <div class="plan-feature"><span class="feature-check">✦</span> Priority support (response &lt;2 hrs)</div>
+        </div>
+        <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" target="_blank" class="plan-btn plan-btn-outline">Let's Scale →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section id="guarantee" class="guarantee-section">
+  <div class="container">
+    <div class="guarantee-inner">
+      <span class="guarantee-icon">🛡️</span>
+      <h2 class="guarantee-title">The <em>Apex Guarantee</em>:<br>3 New Clients in 30 Days<br>or Your Money Back</h2>
+      <p class="guarantee-desc">
+        We're so confident in our system that we put our money where our mouth is. 
+        If your AI team doesn't bring in at least 3 new clients within your first 30 days, 
+        we'll refund every single dollar. No fine print. No "well actually." Just a full refund. 
+        That's how confident we are in Chris, Jordan, and Nina.
+      </p>
+      <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" target="_blank" class="btn-primary">
+        Claim Your Risk-Free Strategy Call →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <div class="final-cta-inner">
+      <div class="urgency-bar">
+        ⚡ Limited spots available — we only onboard 5 new clients per month to ensure quality
+      </div>
+      <h2>Your Competitors Are<br>Already Using AI.<br><em>Will You Lead or Follow?</em></h2>
+      <p class="section-desc" style="margin-top: 20px;">
+        While you're reading this, other practices in your market are deploying AI that follows up with leads in 60 seconds, books appointments automatically, and floods them with 5-star reviews. The window to be first is closing.
+      </p>
+      <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" target="_blank" class="btn-primary" style="margin-top: 12px; display: inline-flex;">
+        🚀 Book My Free Strategy Call — It's 15 Minutes
+      </a>
+      <p style="margin-top: 20px; color: var(--gray); font-size: 0.85rem;">
+        Free. No commitment. No sales pressure. Just clarity on what's possible for your practice.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Apex <span>AI</span> Agents</div>
+  <div class="footer-links">
+    <a href="#how-it-works">How It Works</a>
+    <a href="#agents">AI Team</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#guarantee">Guarantee</a>
+    <a href="https://calendly.com/bigmojoeinvest/15-minutes-ai-sustem-demo" target="_blank">Book a Call</a>
+  </div>
+  <p class="footer-copy">© 2026 Apex AI Agents · apexaiagents.agency · All rights reserved</p>
+</footer>
+
+</body>
+</html>
