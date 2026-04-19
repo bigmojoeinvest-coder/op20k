@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BetEdge — Best Sports Betting Bonuses & Reviews 2026</title>
+<meta name="description" content="Compare the best sports betting sites, claim exclusive bonuses up to $1,500, and get expert picks for NFL, NBA, MLB, UFC and more.">
+<style>
+  :root {
+    --green: #00c853;
+    --dark-green: #00a342;
+    --navy: #0a0e1a;
+    --card: #111827;
+    --border: #1f2937;
+    --gold: #f59e0b;
+    --red: #ef4444;
+    --text: #f3f4f6;
+    --muted: #6b7280;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:var(--navy); color:var(--text); }
+
+  /* NAV */
+  nav { background:#060a12; border-bottom:1px solid var(--border); padding:0 24px; display:flex; justify-content:space-between; align-items:center; height:60px; position:sticky; top:0; z-index:100; }
+  .logo { font-size:22px; font-weight:900; color:var(--green); letter-spacing:-0.5px; }
+  .logo span { color:#fff; }
+  .nav-links { display:flex; gap:24px; }
+  .nav-links a { color:var(--muted); text-decoration:none; font-size:14px; font-weight:500; }
+  .nav-links a:hover { color:#fff; }
+  .nav-cta { background:var(--green); color:#000; padding:8px 18px; border-radius:6px; text-decoration:none; font-weight:700; font-size:14px; }
+
+  /* HERO */
+  .hero { background:linear-gradient(135deg,#060a12 0%,#0d1f3c 50%,#060a12 100%); padding:60px 24px; text-align:center; border-bottom:1px solid var(--border); }
+  .hero-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(0,200,83,0.1); border:1px solid rgba(0,200,83,0.3); color:var(--green); padding:6px 14px; border-radius:20px; font-size:12px; font-weight:700; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,5vw,52px); font-weight:900; line-height:1.1; margin-bottom:14px; }
+  .hero h1 span { color:var(--green); }
+  .hero p { font-size:17px; color:var(--muted); max-width:580px; margin:0 auto 32px; line-height:1.6; }
+  .hero-stats { display:flex; justify-content:center; gap:40px; flex-wrap:wrap; }
+  .hstat { text-align:center; }
+  .hstat .num { font-size:28px; font-weight:900; color:var(--green); }
+  .hstat .label { font-size:12px; color:var(--muted); margin-top:2px; }
+
+  /* LIVE ODDS TICKER */
+  .ticker { background:#060a12; border-bottom:1px solid var(--border); padding:10px 0; overflow:hidden; }
+  .ticker-inner { display:flex; gap:40px; animation:scroll 30s linear infinite; white-space:nowrap; }
+  .tick-item { display:flex; align-items:center; gap:8px; font-size:13px; }
+  .tick-team { font-weight:600; }
+  .tick-odds { color:var(--green); font-weight:700; }
+  .tick-sep { color:var(--muted); }
+  @keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* SPORTSBOOK CARDS */
+  .section { padding:48px 24px; max-width:1100px; margin:0 auto; }
+  .section-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; }
+  .section-title { font-size:22px; font-weight:800; }
+  .section-sub { color:var(--muted); font-size:14px; margin-top:4px; }
+  .view-all { color:var(--green); text-decoration:none; font-size:14px; font-weight:600; }
+
+  .book-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px 24px; margin-bottom:16px; display:grid; grid-template-columns:180px 1fr auto; gap:20px; align-items:center; transition:border-color 0.2s; }
+  .book-card:hover { border-color:var(--green); }
+  .book-card.featured { border-color:var(--gold); position:relative; }
+  .featured-badge { position:absolute; top:-10px; left:20px; background:var(--gold); color:#000; font-size:10px; font-weight:800; padding:3px 10px; border-radius:10px; }
+  .book-logo { display:flex; flex-direction:column; align-items:flex-start; }
+  .book-name { font-size:20px; font-weight:900; }
+  .book-name.dk { color:#62b8f6; }
+  .book-name.fd { color:#1493ff; }
+  .book-name.mgm { color:#c9a227; }
+  .book-name.caesars { color:#003087; background:#003087; color:#fff; padding:2px 8px; border-radius:4px; }
+  .book-name.pb { color:#00a550; }
+  .book-name.bet365 { color:#fff; background:#027b5b; padding:2px 8px; border-radius:4px; }
+  .stars { color:var(--gold); font-size:14px; margin-top:4px; }
+  .book-info { }
+  .bonus-amount { font-size:24px; font-weight:900; color:var(--green); margin-bottom:4px; }
+  .bonus-desc { font-size:13px; color:var(--muted); margin-bottom:10px; }
+  .book-features { display:flex; gap:8px; flex-wrap:wrap; }
+  .feature-tag { background:#1a2332; color:var(--muted); font-size:11px; padding:3px 8px; border-radius:6px; }
+  .feature-tag.good { background:rgba(0,200,83,0.1); color:var(--green); }
+  .book-cta { text-align:center; min-width:140px; }
+  .claim-btn { display:block; background:var(--green); color:#000; padding:12px 20px; border-radius:8px; text-decoration:none; font-weight:800; font-size:14px; margin-bottom:8px; text-align:center; }
+  .claim-btn:hover { background:var(--dark-green); }
+  .claim-btn.gold { background:var(--gold); }
+  .terms-link { color:var(--muted); font-size:11px; text-decoration:none; display:block; }
+
+  /* PICKS SECTION */
+  .picks-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+  .pick-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; }
+  .pick-sport { font-size:11px; font-weight:700; color:var(--green); letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
+  .pick-game { font-size:15px; font-weight:700; margin-bottom:4px; }
+  .pick-bet { color:var(--muted); font-size:13px; margin-bottom:12px; }
+  .pick-bottom { display:flex; justify-content:space-between; align-items:center; }
+  .pick-odds { font-size:18px; font-weight:900; color:var(--green); }
+  .pick-conf { font-size:12px; color:var(--muted); }
+  .conf-bar { height:4px; background:#1a2332; border-radius:2px; margin-top:4px; }
+  .conf-fill { height:100%; border-radius:2px; background:var(--green); }
+  .win-badge { background:rgba(0,200,83,0.1); color:var(--green); font-size:11px; padding:3px 8px; border-radius:10px; font-weight:700; }
+  .loss-badge { background:rgba(239,68,68,0.1); color:var(--red); font-size:11px; padding:3px 8px; border-radius:10px; font-weight:700; }
+
+  /* HOW IT WORKS */
+  .how { background:#060a12; padding:60px 24px; }
+  .how-inner { max-width:900px; margin:0 auto; text-align:center; }
+  .how h2 { font-size:28px; font-weight:800; margin-bottom:8px; }
+  .how-sub { color:var(--muted); margin-bottom:40px; }
+  .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:24px; }
+  .step { text-align:center; }
+  .step-num { width:52px; height:52px; background:var(--green); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:22px; font-weight:900; color:#000; margin:0 auto 14px; }
+  .step h3 { font-size:16px; font-weight:700; margin-bottom:6px; }
+  .step p { font-size:13px; color:var(--muted); line-height:1.5; }
+
+  /* STATES */
+  .states { padding:48px 24px; max-width:1100px; margin:0 auto; }
+  .states-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:12px; }
+  .state-card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:12px; text-align:center; text-decoration:none; color:var(--text); }
+  .state-card:hover { border-color:var(--green); }
+  .state-name { font-size:13px; font-weight:700; margin-bottom:4px; }
+  .state-books { font-size:11px; color:var(--muted); }
+  .state-legal { display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--green); margin-right:4px; }
+
+  /* FOOTER */
+  footer { background:#060a12; border-top:1px solid var(--border); padding:40px 24px; }
+  .footer-inner { max-width:1100px; margin:0 auto; }
+  .footer-top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; margin-bottom:32px; }
+  .footer-brand .logo { font-size:24px; margin-bottom:12px; display:block; }
+  .footer-brand p { font-size:13px; color:var(--muted); line-height:1.6; }
+  .footer-col h4 { font-size:13px; font-weight:700; margin-bottom:12px; color:#fff; }
+  .footer-col a { display:block; font-size:13px; color:var(--muted); text-decoration:none; margin-bottom:8px; }
+  .footer-col a:hover { color:#fff; }
+  .footer-bottom { border-top:1px solid var(--border); padding-top:24px; }
+  .rg-bar { display:flex; gap:16px; align-items:center; margin-bottom:12px; flex-wrap:wrap; }
+  .rg-badge { background:#1a2332; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:700; color:var(--muted); }
+  .disclaimer { font-size:11px; color:#374151; line-height:1.6; }
+
+  @media(max-width:768px) {
+    .book-card { grid-template-columns:1fr; }
+    .footer-top { grid-template-columns:1fr 1fr; }
+    .nav-links { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Bet<span>Edge</span></div>
+  <div class="nav-links">
+    <a href="#books">Sportsbooks</a>
+    <a href="#picks">Free Picks</a>
+    <a href="#bonuses">Bonuses</a>
+    <a href="#states">By State</a>
+    <a href="#how">How It Works</a>
+  </div>
+  <a href="#books" class="nav-cta">Claim Bonus →</a>
+</nav>
+
+<!-- LIVE TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <div class="tick-item"><span class="tick-team">Chiefs</span><span class="tick-sep">vs</span><span class="tick-team">Eagles</span><span class="tick-odds">-110</span></div>
+    <div class="tick-item"><span class="tick-team">Lakers</span><span class="tick-sep">vs</span><span class="tick-team">Celtics</span><span class="tick-odds">+140</span></div>
+    <div class="tick-item"><span class="tick-team">Yankees</span><span class="tick-sep">vs</span><span class="tick-team">Red Sox</span><span class="tick-odds">-125</span></div>
+    <div class="tick-item"><span class="tick-team">Warriors</span><span class="tick-sep">vs</span><span class="tick-team">Nuggets</span><span class="tick-odds">+105</span></div>
+    <div class="tick-item"><span class="tick-team">Canelo</span><span class="tick-sep">vs</span><span class="tick-team">Crawford</span><span class="tick-odds">+180</span></div>
+    <div class="tick-item"><span class="tick-team">Cowboys</span><span class="tick-sep">vs</span><span class="tick-team">Giants</span><span class="tick-odds">-145</span></div>
+    <div class="tick-item"><span class="tick-team">Dodgers</span><span class="tick-sep">vs</span><span class="tick-team">Mets</span><span class="tick-odds">-130</span></div>
+    <div class="tick-item"><span class="tick-team">Chiefs</span><span class="tick-sep">vs</span><span class="tick-team">Eagles</span><span class="tick-odds">-110</span></div>
+    <div class="tick-item"><span class="tick-team">Lakers</span><span class="tick-sep">vs</span><span class="tick-team">Celtics</span><span class="tick-odds">+140</span></div>
+    <div class="tick-item"><span class="tick-team">Yankees</span><span class="tick-sep">vs</span><span class="tick-team">Red Sox</span><span class="tick-odds">-125</span></div>
+    <div class="tick-item"><span class="tick-team">Warriors</span><span class="tick-sep">vs</span><span class="tick-team">Nuggets</span><span class="tick-odds">+105</span></div>
+    <div class="tick-item"><span class="tick-team">Canelo</span><span class="tick-sep">vs</span><span class="tick-team">Crawford</span><span class="tick-odds">+180</span></div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🏆 #1 Rated Sports Betting Review Site 2026</div>
+  <h1>Claim Up To <span>$1,500</span> In<br>Free Bet Bonuses Today</h1>
+  <p>We compare every major sportsbook so you get the best bonuses, sharpest odds, and fastest payouts. Expert picks included — free.</p>
+  <div class="hero-stats">
+    <div class="hstat"><div class="num">$4.2M+</div><div class="label">Bonuses Claimed</div></div>
+    <div class="hstat"><div class="num">47</div><div class="label">Sportsbooks Reviewed</div></div>
+    <div class="hstat"><div class="num">68%</div><div class="label">Win Rate This Season</div></div>
+    <div class="hstat"><div class="num">340K+</div><div class="label">Monthly Readers</div></div>
+  </div>
+</div>
+
+<!-- TOP SPORTSBOOKS -->
+<div class="section" id="books">
+  <div class="section-header">
+    <div>
+      <div class="section-title">🏅 Top Sportsbooks — April 2026</div>
+      <div class="section-sub">Ranked by bonus value, odds quality & payout speed</div>
+    </div>
+    <a href="#books" class="view-all">See All 47 →</a>
+  </div>
+
+  <!-- DraftKings -->
+  <div class="book-card featured">
+    <div class="featured-badge">⭐ EDITOR'S PICK</div>
+    <div class="book-logo">
+      <div class="book-name dk">DraftKings</div>
+      <div class="stars">★★★★★</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px;">Rating: 9.8/10</div>
+    </div>
+    <div class="book-info">
+      <div class="bonus-amount">Bet $5, Get $200</div>
+      <div class="bonus-desc">Guaranteed bonus + up to $1,000 deposit match for new users</div>
+      <div class="book-features">
+        <span class="feature-tag good">✓ Fast Payouts</span>
+        <span class="feature-tag good">✓ Live Betting</span>
+        <span class="feature-tag good">✓ Same Game Parlay</span>
+        <span class="feature-tag">25+ Sports</span>
+        <span class="feature-tag">iOS & Android</span>
+      </div>
+    </div>
+    <div class="book-cta">
+      <a href="https://www.draftkings.com" class="claim-btn gold" target="_blank" rel="nofollow">Claim Bonus</a>
+      <a href="#books" class="terms-link">T&Cs Apply. 21+</a>
+    </div>
+  </div>
+
+  <!-- FanDuel -->
+  <div class="book-card">
+    <div class="book-logo">
+      <div class="book-name fd">FanDuel</div>
+      <div class="stars">★★★★★</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px;">Rating: 9.7/10</div>
+    </div>
+    <div class="book-info">
+      <div class="bonus-amount">Bet $5, Get $200</div>
+      <div class="bonus-desc">No Sweat First Bet up to $1,000 — if you lose, get it back in bonus bets</div>
+      <div class="book-features">
+        <span class="feature-tag good">✓ #1 US Sportsbook</span>
+        <span class="feature-tag good">✓ Fastest Withdrawals</span>
+        <span class="feature-tag good">✓ NFL Specials</span>
+        <span class="feature-tag">Daily Boosts</span>
+        <span class="feature-tag">Live Streaming</span>
+      </div>
+    </div>
+    <div class="book-cta">
+      <a href="https://www.fanduel.com/sportsbook" class="claim-btn" target="_blank" rel="nofollow">Claim Bonus</a>
+      <a href="#books" class="terms-link">T&Cs Apply. 21+</a>
+    </div>
+  </div>
+
+  <!-- BetMGM -->
+  <div class="book-card">
+    <div class="book-logo">
+      <div class="book-name mgm">BetMGM</div>
+      <div class="stars">★★★★½</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px;">Rating: 9.4/10</div>
+    </div>
+    <div class="book-info">
+      <div class="bonus-amount">Up to $1,500</div>
+      <div class="bonus-desc">First Bet Offer — get up to $1,500 back in bonus bets if your first bet loses</div>
+      <div class="book-features">
+        <span class="feature-tag good">✓ MGM Rewards</span>
+        <span class="feature-tag good">✓ Edit My Bet</span>
+        <span class="feature-tag good">✓ $1,500 Protection</span>
+        <span class="feature-tag">Casino + Sports</span>
+        <span class="feature-tag">20+ States</span>
+      </div>
+    </div>
+    <div class="book-cta">
+      <a href="https://www.betmgm.com" class="claim-btn" target="_blank" rel="nofollow">Claim Bonus</a>
+      <a href="#books" class="terms-link">T&Cs Apply. 21+</a>
+    </div>
+  </div>
+
+  <!-- Caesars -->
+  <div class="book-card">
+    <div class="book-logo">
+      <div class="book-name caesars">CAESARS</div>
+      <div class="stars">★★★★½</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px;">Rating: 9.2/10</div>
+    </div>
+    <div class="book-info">
+      <div class="bonus-amount">$1,000 First Bet</div>
+      <div class="bonus-desc">First bet on Caesars — if it loses, get up to $1,000 back in bonus bets</div>
+      <div class="book-features">
+        <span class="feature-tag good">✓ Caesars Rewards</span>
+        <span class="feature-tag good">✓ Profit Boosts</span>
+        <span class="feature-tag">NFL Exclusives</span>
+        <span class="feature-tag">Live In-Game</span>
+      </div>
+    </div>
+    <div class="book-cta">
+      <a href="https://www.caesars.com/sportsbook-and-casino" class="claim-btn" target="_blank" rel="nofollow">Claim Bonus</a>
+      <a href="#books" class="terms-link">T&Cs Apply. 21+</a>
+    </div>
+  </div>
+
+  <!-- PointsBet -->
+  <div class="book-card">
+    <div class="book-logo">
+      <div class="book-name pb">PointsBet</div>
+      <div class="stars">★★★★</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:4px;">Rating: 8.8/10</div>
+    </div>
+    <div class="book-info">
+      <div class="bonus-amount">5 x $100 Bonus Bets</div>
+      <div class="bonus-desc">Get 5 second-chance bets worth $100 each — $500 total protection</div>
+      <div class="book-features">
+        <span class="feature-tag good">✓ PointsBetting Feature</span>
+        <span class="feature-tag good">✓ No Juice Lines</span>
+        <span class="feature-tag">Unique Bet Types</span>
+      </div>
+    </div>
+    <div class="book-cta">
+      <a href="https://www.pointsbet.com" class="claim-btn" target="_blank" rel="nofollow">Claim Bonus</a>
+      <a href="#books" class="terms-link">T&Cs Apply. 21+</a>
+    </div>
+  </div>
+</div>
+
+<!-- FREE PICKS -->
+<div class="section" id="picks">
+  <div class="section-header">
+    <div>
+      <div class="section-title">🎯 Today's Expert Picks — Free</div>
+      <div class="section-sub">Our analysts are 68% on the season. Updated daily.</div>
+    </div>
+  </div>
+  <div class="picks-grid">
+    <div class="pick-card">
+      <div class="pick-sport">🏈 NFL</div>
+      <div class="pick-game">Kansas City Chiefs vs Philadelphia Eagles</div>
+      <div class="pick-bet">Chiefs -3.5 (Spread)</div>
+      <div class="pick-bottom">
+        <div>
+          <div class="pick-odds">-110</div>
+          <div class="pick-conf">Confidence: 74%</div>
+          <div class="conf-bar"><div class="conf-fill" style="width:74%"></div></div>
+        </div>
+        <span class="win-badge">🔥 HOT PICK</span>
+      </div>
+    </div>
+    <div class="pick-card">
+      <div class="pick-sport">🏀 NBA</div>
+      <div class="pick-game">Boston Celtics vs New York Knicks</div>
+      <div class="pick-bet">Over 218.5 (Total)</div>
+      <div class="pick-bottom">
+        <div>
+          <div class="pick-odds">-108</div>
+          <div class="pick-conf">Confidence: 68%</div>
+          <div class="conf-bar"><div class="conf-fill" style="width:68%"></div></div>
+        </div>
+        <span class="win-badge">✅ LOCK</span>
+      </div>
+    </div>
+    <div class="pick-card">
+      <div class="pick-sport">⚾ MLB</div>
+      <div class="pick-game">New York Yankees vs Boston Red Sox</div>
+      <div class="pick-bet">Yankees ML (Moneyline)</div>
+      <div class="pick-bottom">
+        <div>
+          <div class="pick-odds">-135</div>
+          <div class="pick-conf">Confidence: 71%</div>
+          <div class="conf-bar"><div class="conf-fill" style="width:71%"></div></div>
+        </div>
+        <span class="win-badge">💰 VALUE</span>
+      </div>
+    </div>
+    <div class="pick-card">
+      <div class="pick-sport">🥊 UFC/MMA</div>
+      <div class="pick-game">Canelo Alvarez vs Terence Crawford</div>
+      <div class="pick-bet">Canelo by Decision</div>
+      <div class="pick-bottom">
+        <div>
+          <div class="pick-odds">+165</div>
+          <div class="pick-conf">Confidence: 62%</div>
+          <div class="conf-bar"><div class="conf-fill" style="width:62%"></div></div>
+        </div>
+        <span class="win-badge">⚡ PARLAY IT</span>
+      </div>
+    </div>
+    <div class="pick-card">
+      <div class="pick-sport">⚽ SOCCER</div>
+      <div class="pick-game">Manchester City vs Arsenal</div>
+      <div class="pick-bet">Both Teams to Score</div>
+      <div class="pick-bottom">
+        <div>
+          <div class="pick-odds">+115</div>
+          <div class="pick-conf">Confidence: 66%</div>
+          <div class="conf-bar"><div class="conf-fill" style="width:66%"></div></div>
+        </div>
+        <span class="win-badge">📈 TRENDING</span>
+      </div>
+    </div>
+    <div class="pick-card">
+      <div class="pick-sport">🏒 NHL</div>
+      <div class="pick-game">New York Rangers vs Pittsburgh Penguins</div>
+      <div class="pick-bet">Rangers -1.5 (Puck Line)</div>
+      <div class="pick-bottom">
+        <div>
+          <div class="pick-odds">+145</div>
+          <div class="pick-conf">Confidence: 59%</div>
+          <div class="conf-bar"><div class="conf-fill" style="width:59%"></div></div>
+        </div>
+        <span class="win-badge">💎 VALUE BET</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how" id="how">
+  <div class="how-inner">
+    <h2>How To Claim Your Bonus</h2>
+    <p class="how-sub">Get your free bet in 3 simple steps</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Choose a Sportsbook</h3>
+        <p>Pick from our top-rated sportsbooks above. We recommend DraftKings or FanDuel for beginners.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Click & Sign Up</h3>
+        <p>Click the "Claim Bonus" button and register for a new account. Takes under 2 minutes.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Collect Your Bonus</h3>
+        <p>Make your first deposit, place your first bet, and your bonus will be credited automatically.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Use Our Free Picks</h3>
+        <p>Check our daily expert picks to maximize your winning potential. Updated every morning.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LEGAL STATES -->
+<div class="states" id="states">
+  <div class="section-header">
+    <div>
+      <div class="section-title">📍 Legal Sports Betting By State</div>
+      <div class="section-sub">Find the best sportsbooks available in your state</div>
+    </div>
+  </div>
+  <div class="states-grid">
+    <a href="#books" class="state-card"><div class="state-name"><span class="state-legal"></span>New Jersey</div><div class="state-books">12 Books Available</div></a>
+    <a href="#books" class="state-card"><div class="state-name"><span class="state-legal"></span>New York</div><div class="state-books">9 Books Available</div></a>
+    <a href="#books" class="state-card"><div class="state-name"><span class="state-legal"></span>Pennsylvania</div><div class="state-books">14 Books Available</div></a>
+    <a href="#books" class="state-card"><div class="state-name"><span class="state-legal"></span>Florida</div><div class="state-books">3 Books Available</div></a>
+    <a href="#books" class="state-card"><div class="state-name"><span class="state-legal"></span>Michigan</div><div class="state-books">11 Books Available</div></a>
+    <a href="#books" class="state-card"><div class="state-name"><span class="state-legal"></span>Nevada</div><div class="state-books">20+ Books Available</div></a>
+    <a href="#books" class="state-card"><div class="state-name"><span class="state-legal"></span>Colorado</div><div class="state-books">13 Books Available</div></a>
+    <a href="#books" class="state-card"><div class="state-name"><span class="state-legal"></span>Illinois</div><div class="state-books">10 Books Available</div></a>
+    <a href="#books" class="state-card"><div class="state-name"><span class="state-legal"></span>Virginia</div><div class="state-books">11 Books Available</div></a>
+    <a href="#books" class="state-card"><div class="state-name"><span class="state-legal"></span>Arizona</div><div class="state-books">16 Books Available</div></a>
+    <a href="#books" class="state-card"><div class="state-name"><span class="state-legal"></span>Tennessee</div><div class="state-books">9 Books Available</div></a>
+    <a href="#books" class="state-card"><div class="state-name"><span class="state-legal"></span>Massachusetts</div><div class="state-books">7 Books Available</div></a>
+    <a href="#books" class="state-card"><div class="state-name"><span class="state-legal"></span>Ohio</div><div class="state-books">12 Books Available</div></a>
+    <a href="#books" class="state-card"><div class="state-name"><span class="state-legal"></span>Maryland</div><div class="state-books">8 Books Available</div></a>
+    <a href="#books" class="state-card"><div class="state-name"><span class="state-legal"></span>Kansas</div><div class="state-books">6 Books Available</div></a>
+    <a href="#books" class="state-card"><div class="state-name"><span class="state-legal"></span>Indiana</div><div class="state-books">12 Books Available</div></a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo">Bet<span>Edge</span></span>
+        <p>BetEdge is an independent sports betting review and comparison site. We earn commissions when you click our links and sign up with sportsbooks. We are not a sportsbook and do not accept wagers.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sportsbooks</h4>
+        <a href="#">DraftKings Review</a>
+        <a href="#">FanDuel Review</a>
+        <a href="#">BetMGM Review</a>
+        <a href="#">Caesars Review</a>
+        <a href="#">PointsBet Review</a>
+      </div>
+      <div class="footer-col">
+        <h4>Sports</h4>
+        <a href="#">NFL Picks</a>
+        <a href="#">NBA Picks</a>
+        <a href="#">MLB Picks</a>
+        <a href="#">UFC Picks</a>
+        <a href="#">Soccer Picks</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="#">How to Bet</a>
+        <a href="#">Betting Glossary</a>
+        <a href="#">Bonus Guide</a>
+        <a href="#">Legal States</a>
+        <a href="#">Responsible Gaming</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="rg-bar">
+        <span class="rg-badge">🔞 21+ Only</span>
+        <span class="rg-badge">Problem Gambling Helpline: 1-800-522-4700</span>
+        <span class="rg-badge">ncpgambling.org</span>
+        <span class="rg-badge">gamblersanonymous.org</span>
+      </div>
+      <p class="disclaimer">BetEdge is intended for adults 21 and older located in jurisdictions where online sports betting is legal. Gambling involves risk. Please gamble responsibly. Our picks are for entertainment purposes only and do not guarantee winnings. Bonus offers subject to terms and conditions set by individual sportsbooks. BetEdge receives compensation from sportsbooks when users register through our affiliate links. This does not influence our editorial ratings.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
